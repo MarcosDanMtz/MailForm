@@ -1,0 +1,39 @@
+{
+  "name": "feedback",
+  "version": "1.0.0",
+  "description": "FEEDBACK project for apps",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaotzin68/feedback.git"
+  },
+  "keywords": [
+    "feedback",
+    "&",
+    "mailing"
+  ],
+  "author": "Alberto Fuentes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yaotzin68/feedback/issues"
+  },
+  "homepage": "https://github.com/yaotzin68/feedback#readme",
+  "dependencies": {
+    "boom": "^5.2.0",
+    "hapi": "^16.5.2",
+    "hapi-swagger": "^7.7.0",
+    "inert": "^4.2.1",
+    "joi": "^10.6.0",
+    "mongojs": "^2.4.1",
+    "mongoose": "^4.11.7",
+    "node-uuid": "^1.4.8",
+    "nodemon": "^1.11.0",
+    "vision": "^4.1.1",
+    "request": "^2.79.0"
+  }
+}

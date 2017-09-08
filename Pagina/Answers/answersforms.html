@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FormMail</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://www.dropbox.com/s/l2glrey3hd47j2p/bootstrap.css?dl=0" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Done:</h1>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="header-form">{{{ headerAns }}}</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div id="body-form" ng-bind-html="expression">{{{ questionsAnsdone }}}</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div id="body-form" ng-bind-html="expression">{{{ footer }}}</div>
+			</div>
+			
+		</div>
+	</div>
+	<script src="http://localhost:3000/files/js/ConectServices.js"></script>
+</body>
+</html>

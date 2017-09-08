@@ -1,0 +1,112 @@
+
+--------------------------------QUESTIONS---------------------------
+
+"status": "UPDATE",
+    "text": "Made contact with Rohit Magazine to discuss a OneOps solution for GTSMX innovation developments, will further discuss details this week",
+    "createdate": "2017-09-05T10:50:00.000Z",
+    "answers": [
+      {
+        "id_answer": "af0d5290-9195-11e7-aed4-af3543fc6594"
+      },
+      {
+        "id_answer": "c6f3f1c0-9195-11e7-aed4-af3543fc6594"
+      },
+      {
+        "id_answer": "f446e150-9195-11e7-aed4-af3543fc6594"
+      }
+    ]
+
+
+    "status": "UPDATE",
+    "text": "A meeting with Walmex Digital Labs has been scheduled to discuss 3 possible ways to collaborate that I have identified: 1. leveraging their developments to international, 2. developing solutions on their backlog, 3. delivering new solutions from the GTSMX innovation portfolio",
+    "createdate": "2017-09-05T10:25:00.000Z",
+    "answers": [
+      {
+        "id_answer": "af0d5290-9195-11e7-aed4-af3543fc6594"
+      },
+      {
+        "id_answer": "c6f3f1c0-9195-11e7-aed4-af3543fc6594"
+      },
+      {
+        "id_answer": "f446e150-9195-11e7-aed4-af3543fc6594"
+      }
+    ]
+
+
+    "status": "REQUEST",
+    "text": "I had previously agreed with Gabriel to do home office for 2 weeks (18-29 Sep) at my home town to attend family matters. I would like to confirm approval with you",
+    "createdate": "2017-09-05T10:24:00.000Z",
+    "answers": [
+      {
+        "id_answer": "af0d5290-9195-11e7-aed4-af3543fc6594"
+      },
+      {
+        "id_answer": "e203a0e0-9196-11e7-8ae2-c5669cf768ac"
+      }
+    ]
+
+
+    "status": "FEEDBACK",
+    "text": "Worked together with Daniela De Leon to enhance her Communication Strategy with an innovative marketing approach that <strong>screams delivery!<//strong> Please find proposal attached",
+    "createdate": "2017-09-05T10:26:00.000Z",
+    "answers": [
+      {
+        "id_answer": "af0d5290-9195-11e7-aed4-af3543fc6594"
+      },
+      {
+        "id_answer": "ee46ef20-924e-11e7-b3f6-f56abd76d24a"
+      },
+      {
+        "id_answer": "f446e150-9195-11e7-aed4-af3543fc6594"
+      }
+    ]
+
+
+
+------------------------------------------ANSWERS-----------------------------
+"text": "Will read later",
+    "value": "willreadlater"
+
+
+---------------------------------------FORMS----------------------------------
+
+ "header": "Hope you had an adventurous weekend! This is your official weekly post to keep you updated on things you need to know, and for me to request things that I need",
+    "footer": "<p>Ready for another great week?</p>",
+    "dateanswer": "",
+    "questions": [
+      {
+        "idquestion": "3c77ca30-91ae-11e7-81a6-db35e194d85d",
+        "answerid": ""
+      },
+      {
+        "idquestion": "0636ab80-924e-11e7-b3f6-f56abd76d24a",
+        "answerid": ""
+      },
+      {
+        "idquestion": "4a0e3940-924e-11e7-b3f6-f56abd76d24a",
+        "answerid": ""
+      },
+      {
+        "idquestion": "71cd16e0-924e-11e7-b3f6-f56abd76d24a",
+        "answerid": ""
+      },
+      {
+        "idquestion": "ecf92780-9250-11e7-82fb-9d2a2cdfc2b8",
+        "answerid": ""
+      }
+    ]
+
+
+
+
+
+db.forms.aggregate([
+                {
+                    $lookup:
+                    {
+                        from: "questions",
+                        localField: "questions.idquestion",
+                        foreignField: "_id",
+                        as: "allques-ans-res"
+                    }
+                }

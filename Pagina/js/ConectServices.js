@@ -61,7 +61,7 @@ exports.register = function (server, options, next) {
 
 
 function sendinfo (valueans) {
-    var idform = "e142d5e0-932b-11e7-98c8-134629b3a0ca";
+    var idform = "511f09b0-94cb-11e7-a3a0-639f6a998573";
     var questionNum = valueans.split(" ", 1);
     var inicio = questionNum.length + 1;
     var fin = valueans.length;
@@ -116,7 +116,12 @@ function sendinfo (valueans) {
             }
         });
     }
-    $(".part" + questionNum).css("background", "#85C1E9");
+
+
+    //$(".part" + questionNum).attr("class")
+    $("#" + idquestion).attr("class","btn btn-primary");
+
+    //$(".part" + questionNum).css("background", "#85C1E9");
     console.log('tremendo AAAAA');
     
 }

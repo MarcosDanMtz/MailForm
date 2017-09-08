@@ -6,7 +6,7 @@ const Joi   = require('joi');
 exports.register = function(server, options, next) {
 
     const db = server.app.db;
-    var idform = "e142d5e0-932b-11e7-98c8-134629b3a0ca";
+    var idform = "511f09b0-94cb-11e7-a3a0-639f6a998573";
     //Modifical id para nuevo form
     
     allformbyid (idform);
@@ -343,12 +343,25 @@ exports.register = function(server, options, next) {
 
     function fillform(allform){
         var quest = "";
+        var d = new Date();
+        var saludo;
+
+        var curr_date = d.getDate();
+        var curr_month = d.getMonth() + 1; //Months are zero based
+        var curr_year = d.getFullYear();
+
+        var dia= curr_date + "-" + curr_month + "-" + curr_year;
         for (var i = 0; i <= allform[0].questions.length - 1; i++) {
-            quest = quest + "<div class='part" + i + "'><p> [ " + allform[0].all.status + " ] " + allform[0].all.text + "</p>";
+            quest = quest + "<div><p> <strong>[ " + allform[0].all.status + " ]</strong> " + allform[0].all.text + "</p>";
             for (var z = 0; z <= allform[i].all.answers.length - 1; z++) {
-                quest = quest + "<button style='margin: 2px;' type='button' class='btn btn-primary btn-sm' value= '" + i + " " + allform[i].allanswers[z]._id + "' onclick='sendinfo(value)'>" + allform[i].allanswers[z].text + "</button>";
+                quest = quest + "<button id='" + allform[i].allanswers[z]._id + "' style='margin: 2px;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[i].allanswers[z]._id + "' onclick='sendinfo(value)'>" + allform[i].allanswers[z].text + "</button>";
             }
             quest = quest + "<hr></div>";
+        }
+        if (d.getHours()>=12){
+            saludo = "Good Afternoon"
+        }else {
+            saludo = "Good Morning"
         }
         server.views({
             engines: {
@@ -357,6 +370,8 @@ exports.register = function(server, options, next) {
             path:'././Pagina',
             layout:  'index',
             context: {
+                    Good: saludo,
+                    datenow: dia,
                     header: allform[0].header + "<hr>",
                     questionsAns: quest,
                     footer: allform[0].footer

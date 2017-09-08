@@ -9,46 +9,20 @@ exports.register = function(server, options, next) {
 
 
 
-    var idform = "e142d5e0-932b-11e7-98c8-134629b3a0ca";
-    //allformbyidforans (idform);
+    var idform = "511f09b0-94cb-11e7-a3a0-639f6a998573";
+    allformbyidforans (idform);
 
     function allformbyidforans (id) {
-
-
-
-
-        /*db.forms.aggregate([
+        var anstext = [];
+        var anstosend = [];
+        db.forms.aggregate([
                 {
                     $lookup:
                     {
                         from: "questions",
                         localField: "questions.idquestion",
                         foreignField: "_id",
-                        as: "all"
-                    }
-                },
-                {
-                    $unwind: "$all"
-                },
-                {
-                    $lookup:
-                    {
-                        from: "answers",
-                        localField: "all.answers.id_answer",
-                        foreignField: "_id",
-                        as: "allanswers"
-                    }
-                },
-                {
-                    $unwind: "$all"
-                },
-                {
-                    $lookup:
-                    {
-                        from: "answers",
-                        localField: "questions.answerid",
-                        foreignField: "_id",
-                        as: "res"
+                        as: "allquestions"
                     }
                 },
                 {
@@ -60,31 +34,31 @@ exports.register = function(server, options, next) {
                 {
                     return reply(Boom.wrap(err, 'Internal MongoDB error'));
                 }
-                reply(docs);
-            });*/
+                for (var i = 0; i <= docs[0].questions.length - 1; i++) {
+                    //docs.questions[i].answerid id Ans
+                    db.answers.find({_id: docs[0].questions[i].answerid },function (err, docss)
+                    {
+                        //console.log("Error " + err);
+                        if (err) {
+                            return reply(Boom.wrap(err, 'Internal MongoDB error'));
+                        }
 
+                        if (!docss === [])
+                        {
+                            anstext.push(docss[0].text);
+                            console.log(docss[0].text);
+                            console.log(anstext.length);
+                            if (anstext.length ==  docs[0].questions.length){
+                                console.log("Estoy dentro");
+                                fillformAnswers(docs, anstext);
+                            }
+                        }
+                        
+                    });
+                }                
+            });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        var formanscomplete = [];
+        /*var formanscomplete = [];
         db.forms.find({_id: idform },function (erro, docs)
             {
                 //console.log("Error " + erro);
@@ -107,16 +81,25 @@ exports.register = function(server, options, next) {
                 }
                 console.log('---------');
                 console.log(formanscomplete[0]);
-            });
+            });*/
     }
 
 
 
-    function fillformAnswers(allform){
+    function fillformAnswers(form, ans){
+        console.log(ans);
+
+        var d = new Date();
+        var saludo;
+
+        var curr_date = d.getDate();
+        var curr_month = d.getMonth() + 1; //Months are zero based
+        var curr_year = d.getFullYear();
+        var dia= curr_date + "-" + curr_month + "-" + curr_year;
         var quest = "";
-        for (var i = 0; i <= allform[0].questions.length - 1; i++) {
-            quest = quest + "<div class=' part" + i + "'><p> [ " + allform[0].all.status + " ] " + allform[0].all.text + "</p>";
-            //quest = quest + "<button style='margin: 2px;' type='button' class='btn btn-primary btn-sm' >" + allform[i].res[i].text + "</button>";
+        for (var i = 0; i <= form[0].questions.length - 1; i++) {
+            quest = quest + "<div class=' part" + i + "'><p>  [ " + form[0].allquestions[i].status + " ] " + form[0].allquestions[i].text + "</p>";
+            quest = quest + "<button style='margin: 2px;' type='button' class='btn btn-primary btn-sm' >" + ans[i] + "</button>";
             quest = quest + "<hr></div>";
         }
         server.views({
@@ -126,9 +109,11 @@ exports.register = function(server, options, next) {
             path:'././Pagina/Answers',
             layout:  'answersforms',
             context: {
-                    headerAnsa: allform[0].header + "<hr>",
-                    questionsAnsdonea: quest,
-                    footera: allform[0].footer
+                    Good: saludo,
+                    datenow: dia,
+                    headerAns: form[0].header + "<hr>",
+                    questionsAnsdone: quest,
+                    footer: form[0].footer
             }
         })
 
@@ -141,16 +126,6 @@ exports.register = function(server, options, next) {
         })
     
     }
-
-
-
-
-
-
-
-
-
-
 
     //PLACEHOLDER
     //--------------------------------------------------------------
@@ -203,19 +178,7 @@ exports.register = function(server, options, next) {
                         from: "questions",
                         localField: "questions.idquestion",
                         foreignField: "_id",
-                        as: "all"
-                    }
-                },
-                {
-                    $unwind: "$all"
-                },
-                {
-                    $lookup:
-                    {
-                        from: "answers",
-                        localField: "questions.answerid",
-                        foreignField: "_id",
-                        as: "res"
+                        as: "allquestions"
                     }
                 },
                 {

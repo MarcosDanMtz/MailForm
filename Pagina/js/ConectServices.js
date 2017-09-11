@@ -61,15 +61,16 @@ exports.register = function (server, options, next) {
 
 
 function sendinfo (valueans) {
-    var idform = "511f09b0-94cb-11e7-a3a0-639f6a998573";
+    var idform = "53375f30-9738-11e7-88d9-1113c020cefd";
     var questionNum = valueans.split(" ", 1);
     var inicio = questionNum.length + 1;
     var fin = valueans.length;
     var idquestion = valueans.substring(inicio, fin);
     $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-default");
+
     //console.log(idquestion);
     $.ajax({
-    url: "http://localhost:3000/formsid/" + idform
+    url: "https://wmmailform.herokuapp.com/formsid/" + idform
     }).then(function(updateform) {
       update(updateform);
       
@@ -90,41 +91,70 @@ function sendinfo (valueans) {
     function update (form) {
       var infosendstringarr;
       console.log(form);
-      form[0].questions[questionNum].answerid = idquestion;
+
+      var dateStr = new Date();
+
+      if(idquestion == '278ac4e0-96f1-11e7-a1a3-7fbc3871829a'){
+
+        if ($("#message-text" + questionNum).val() === "") {
+          alert("Please fill the textarea for question " + questionNum+1);
+        }else {
+          form[0].questions[questionNum].answerid = idquestion;
+          form[0].questions[questionNum].answer = $("#message-text" + questionNum).val();
+          $("#towrite" + questionNum).attr("class","btn btn-primary");
+        }        
+      }else {
+        form[0].questions[questionNum].answer = "";
+        form[0].questions[questionNum].answerid = idquestion;
+        $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary");
+      }
+      form[0].questions[questionNum].dateanswered = dateStr.toISOString();
       delete form[0]._id;
       infosendstringarr = JSON.stringify(form);
       infosendstringarr = infosendstringarr.substring(1, infosendstringarr.length-1);
+
+
+      
       //console.log(infosendstringarr);
-
-
-      $.ajax({
-            headers : {
-                'Accept' : 'application/json',
-                'Content-Type' : 'application/json'
-            },
-            url : 'http://localhost:3000/forms/' + idform,
-            type : 'PATCH',
-            data : infosendstringarr,
-            success : function(response, textStatus, jqXhr) {
-                console.log("Venue Successfully Patched!");
-            },
-            error : function(jqXHR, textStatus, errorThrown) {
-                // log the error to the console
-                console.log("The following error occured: " + textStatus, errorThrown);
-            },
-            complete : function() {
-                console.log("Venue Patch Ran");
-            }
-        });
+      try {
+        $.ajax({
+              headers : {
+                  'Accept' : 'application/json',
+                  'Content-Type' : 'application/json'
+              },
+              //url : 'http://localhost:3000/forms/' + idform,
+              url : 'https://wmmailform.herokuapp.com/forms/' + idform,
+              type : 'PATCH',
+              data : infosendstringarr,
+              success : function(response, textStatus, jqXhr) {
+                  console.log("Venue Successfully Patched!");
+              },
+              error : function(jqXHR, textStatus, errorThrown) {
+                  // log the error to the console
+                  console.log("The following error occured: " + textStatus, errorThrown);
+              },
+              complete : function() {
+                  console.log("Venue Patch Ran");
+              }
+          });
+        alert("Answer send correctly");
+      }
+      catch (err){
+        alert("Error please refresh the page");
+      }
     }
 
 
     //$(".part" + questionNum).attr("class")
-    $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary");
+    
 
     //$(".part" + questionNum).css("background", "#85C1E9");
     console.log('tremendo AAAAA');
     
+}
+
+function close () {
+  window.close();  
 }
 
 

@@ -1,12 +1,13 @@
 const Boom  = require('boom');
 const uuid  = require('node-uuid');
 const Joi   = require('joi');
+var moment = require('moment');
 
 
 exports.register = function(server, options, next) {
 
     const db = server.app.db;
-    var idform = "511f09b0-94cb-11e7-a3a0-639f6a998573";
+    var idform = "53375f30-9738-11e7-88d9-1113c020cefd";
     //Modifical id para nuevo form
     
     allformbyid (idform);
@@ -300,7 +301,6 @@ exports.register = function(server, options, next) {
                 {
                     header:         Joi.string().required(),
                     footer:         Joi.string().required(),
-                    dateanswer:     Joi.optional(),
                     questions:      Joi.optional()
                 }
             }
@@ -345,16 +345,28 @@ exports.register = function(server, options, next) {
         var quest = "";
         var d = new Date();
         var saludo;
-
         var curr_date = d.getDate();
         var curr_month = d.getMonth() + 1; //Months are zero based
         var curr_year = d.getFullYear();
 
         var dia= curr_date + "-" + curr_month + "-" + curr_year;
         for (var i = 0; i <= allform[0].questions.length - 1; i++) {
-            quest = quest + "<div><p> <strong>[ " + allform[i].all.status + " ]</strong> " + allform[i].all.text + "</p>";
+            quest = quest + "<div class='div" + i + "'><p> <strong>[ " + allform[i].all.status + " ]</strong> " + allform[i].all.text + "</p>";
             for (var z = 0; z <= allform[i].all.answers.length - 1; z++) {
-                quest = quest + "<button id='"+ i +"-" + allform[i].allanswers[z]._id + "' style='margin: 2px;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[i].allanswers[z]._id + "' onclick='sendinfo(value)'>" + allform[i].allanswers[z].text + "</button>";
+                //for (var y = 0; y <= allform[i].all.answers.length - 1; y++) {
+                    //if (allform[i].all[i].answers[z].id_answer == allform[i].allanswers[i]._id) {
+                        //console.log(allform[i].all[i]);
+                        if (allform[i].allanswers[z]._id == "278ac4e0-96f1-11e7-a1a3-7fbc3871829a")
+                        {
+                            //quest = quest + "<button id='"+ i +"-" + allform[i].allanswers[z]._id + "' style='margin: 2px' type='button' class='btn btn-default btn-sm part" + i + "'        data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo'      value= '" + i + " " + allform[i].allanswers[z]._id + "'>" + allform[i].allanswers[z].text + "</button>";   
+                            quest = quest + "<button id='towrite" + i + "' style='margin: 2px' type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal" + i + "' data-whatever='@mdo' value= '" + i + " " + allform[i].allanswers[z]._id + "'>click to write</button>";   
+                            quest = quest + "<div class='modal fade' id='exampleModal" + i + "' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'><div class='modal-dialog' role='document'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <h4 class='modal-title' id='exampleModalLabel'>Opinion</h4></div><div class='modal-body'><form><div class='form-group'><label for='message-text' class='control-label'>Message:</label><textarea class='form-control' id='message-text" + i + "'></textarea></div></form></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>     <button id='"+ i +"-" + allform[i].allanswers[z]._id + "' type='button' onclick='sendinfo(value)' class='btn btn-primary part" + i + "' value= '" + i + " " + allform[i].allanswers[z]._id + "' >Send message</button>    </div></div></div></div>";
+                            //quest = quest + "<textarea style='margin: 2px 2px -15px 0px'></textarea>";
+                        }else {
+                            quest = quest + "<button id='"+ i +"-" + allform[i].allanswers[z]._id + "' style='margin: 2px' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[i].allanswers[z]._id + "' onclick='sendinfo(value)'>" + allform[i].allanswers[z].text + "</button>";   
+                        }
+                    //}
+                //}
             }
             quest = quest + "<hr></div>";
         }
@@ -371,7 +383,7 @@ exports.register = function(server, options, next) {
             layout:  'index',
             context: {
                     Good: saludo,
-                    datenow: dia,
+                    datenow: moment().format("MMM Do YY"),
                     header: allform[0].header + "<hr>",
                     questionsAns: quest,
                     footer: allform[0].footer

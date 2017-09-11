@@ -5,9 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>FormMail</title>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<!--<script src="js/bootstrap.js"></script>-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="https://www.dropbox.com/s/l2glrey3hd47j2p/bootstrap.css?dl=0" crossorigin="anonymous">
+	<!--<link rel="stylesheet" type="text/css" href="https://www.dropbox.com/s/l2glrey3hd47j2p/bootstrap.css?dl=0" crossorigin="anonymous">-->
 </head>
 <body  style="background-color:#E6E6E6;">
 	<div class="container">
@@ -40,7 +41,15 @@
 			</div>
 			
 		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="body-form" ng-bind-html="expression" style="margin-left: 40%;" onclick="close();"><button type="button" class="btn btn-success">Finish</button>
+</div>
+			</div>
+			
+		</div>
 	</div>
-	<script src="http://localhost:3000/files/js/ConectServices.js"></script>
+	<!--<script src="http://localhost:3000/files/js/ConectServices.js"></script>-->
+	<script src="https://wmmailform.herokuapp.com/files/js/ConectServices.js"></script>
 </body>
 </html>

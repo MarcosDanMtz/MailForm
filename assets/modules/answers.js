@@ -1,6 +1,7 @@
 const Boom  = require('boom');
 const uuid  = require('node-uuid');
 const Joi   = require('joi');
+var moment = require('moment');
 
 
 exports.register = function(server, options, next) {
@@ -9,10 +10,11 @@ exports.register = function(server, options, next) {
 
 
 
-    var idform = "511f09b0-94cb-11e7-a3a0-639f6a998573";
-    allformbyidforans (idform);
+    var idform = "53375f30-9738-11e7-88d9-1113c020cefd";
+    //allformbyidforans (idform);
 
     function allformbyidforans (id) {
+        console.log('rs');
         var anstext = [];
         var anstosend = [];
         db.forms.aggregate([
@@ -43,7 +45,7 @@ exports.register = function(server, options, next) {
                             return reply(Boom.wrap(err, 'Internal MongoDB error'));
                         }
 
-                        if (!docss === [])
+                        if (!docss == [])
                         {
                             anstext.push(docss[0].text);
                             console.log(docss[0].text);
@@ -97,10 +99,23 @@ exports.register = function(server, options, next) {
         var curr_year = d.getFullYear();
         var dia= curr_date + "-" + curr_month + "-" + curr_year;
         var quest = "";
+
+        if (d.getHours()>=12){
+            saludo = "Good Afternoon"
+        }else {
+            saludo = "Good Morning"
+        }
+
         for (var i = 0; i <= form[0].questions.length - 1; i++) {
             quest = quest + "<div class=' part" + i + "'><p>  [ " + form[0].allquestions[i].status + " ] " + form[0].allquestions[i].text + "</p>";
-            quest = quest + "<button style='margin: 2px;' type='button' class='btn btn-primary btn-sm' >" + ans[i] + "</button>";
-            quest = quest + "<hr></div>";
+            if (form[0].questions[i].answerid=="278ac4e0-96f1-11e7-a1a3-7fbc3871829a")
+            {
+                quest = quest + "<textarea disabled>" + form[0].questions[i].answer + "</textarea>";
+                quest = quest + "<hr></div>";
+            }else{
+                quest = quest + "<button style='margin: 2px;' type='button' class='btn btn-primary btn-sm' >" + ans[i] + "</button>";
+                quest = quest + "<hr></div>";
+            }
         }
         server.views({
             engines: {
@@ -110,7 +125,7 @@ exports.register = function(server, options, next) {
             layout:  'answersforms',
             context: {
                     Good: saludo,
-                    datenow: dia,
+                    datenow: moment().format("MMM Do YY"),
                     headerAns: form[0].header + "<hr>",
                     questionsAnsdone: quest,
                     footer: form[0].footer

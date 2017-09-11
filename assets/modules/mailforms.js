@@ -252,7 +252,7 @@ exports.register = function(server, options, next) {
                 {
                     header:         Joi.string().required(),
                     footer:         Joi.string().required(),
-                    dateanswer:     Joi.optional(),
+                    //dateanswer:     Joi.optional(), se elimina
                     questions:      Joi.optional()
                 }
             }
@@ -352,9 +352,9 @@ exports.register = function(server, options, next) {
 
         var dia= curr_date + "-" + curr_month + "-" + curr_year;
         for (var i = 0; i <= allform[0].questions.length - 1; i++) {
-            quest = quest + "<div><p> <strong>[ " + allform[0].all.status + " ]</strong> " + allform[0].all.text + "</p>";
+            quest = quest + "<div><p> <strong>[ " + allform[i].all.status + " ]</strong> " + allform[i].all.text + "</p>";
             for (var z = 0; z <= allform[i].all.answers.length - 1; z++) {
-                quest = quest + "<button id='" + allform[i].allanswers[z]._id + "' style='margin: 2px;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[i].allanswers[z]._id + "' onclick='sendinfo(value)'>" + allform[i].allanswers[z].text + "</button>";
+                quest = quest + "<button id='"+ i +"-" + allform[i].allanswers[z]._id + "' style='margin: 2px;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[i].allanswers[z]._id + "' onclick='sendinfo(value)'>" + allform[i].allanswers[z].text + "</button>";
             }
             quest = quest + "<hr></div>";
         }

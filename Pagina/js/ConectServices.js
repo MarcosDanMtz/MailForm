@@ -66,6 +66,7 @@ function sendinfo (valueans) {
     var inicio = questionNum.length + 1;
     var fin = valueans.length;
     var idquestion = valueans.substring(inicio, fin);
+    $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-default");
     //console.log(idquestion);
     $.ajax({
     url: "http://localhost:3000/formsid/" + idform
@@ -119,7 +120,7 @@ function sendinfo (valueans) {
 
 
     //$(".part" + questionNum).attr("class")
-    $("#" + idquestion).attr("class","btn btn-primary");
+    $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary");
 
     //$(".part" + questionNum).css("background", "#85C1E9");
     console.log('tremendo AAAAA');

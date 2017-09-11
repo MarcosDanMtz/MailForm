@@ -64,6 +64,54 @@ exports.register = function(server, options, next) {
         }
     });
 
+        server.route({
+        method: 'PATCH',
+        path: '/questions/{id}',
+        config:{
+            tags: ['api']
+        },
+        handler: function (request, reply) {
+
+            db.questions.update(
+                {
+                    _id: request.params.id
+                },
+                {
+                    $set: request.payload
+                },
+                function (err, result)
+                {
+
+                    if (err)
+                    {
+                        return reply(Boom.wrap(err, 'Internal MongoDB error'));
+                    }
+
+                    if (result.n === 0)
+                    {
+                        return reply(Boom.notFound());
+                    }
+
+                    reply().code(204);
+                });
+        },
+        config: {
+            tags: ['api'],
+            validate: {
+                params: {
+                    id: Joi.string().required()
+                },
+                payload:
+                {
+                    status:         Joi.string().required(),
+                    text:           Joi.string().required(),
+                    createdate:     Joi.date().iso().optional(),
+                    answers:        Joi.optional()
+                }
+            }
+        }
+    });
+
 
     server.route({
         method: 'POST',

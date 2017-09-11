@@ -29,11 +29,12 @@
     "hapi-swagger": "^7.7.0",
     "inert": "^4.2.1",
     "joi": "^10.6.0",
+    "moment": "^2.18.1",
     "mongojs": "^2.4.1",
     "mongoose": "^4.11.7",
     "node-uuid": "^1.4.8",
     "nodemon": "^1.11.0",
-    "vision": "^4.1.1",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "vision": "^4.1.1"
   }
 }

@@ -30,7 +30,15 @@ exports.register = function(server, options, next) {
         reply.file('././Pagina/js/ConectServices.js')
       }
     })
-//----------------
+//---imageicon send
+    server.route({  
+      method: 'GET',
+      path: '/img/send.png',
+      handler: function (request, reply) {
+        // reply.file() expects the file path as parameter
+        reply.file('././Pagina/img/send.png')
+      }
+    })
 
 
 
@@ -362,11 +370,11 @@ exports.register = function(server, options, next) {
                                 if (allform[j].allanswers[z]._id == "278ac4e0-96f1-11e7-a1a3-7fbc3871829a")
                                 {
                                     //quest = quest + "<button id='"+ i +"-" + allform[i].allanswers[z]._id + "' style='margin: 2px' type='button' class='btn btn-default btn-sm part" + i + "'        data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo'      value= '" + i + " " + allform[i].allanswers[z]._id + "'>" + allform[i].allanswers[z].text + "</button>";   
-                                    quest = quest + "<button id='towrite" + i + "' style='margin: 2px' type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal" + i + "' data-whatever='@mdo' value= '" + i + " " + allform[j].allanswers[z]._id + "'>click to write</button>";   
+                                    quest = quest + "<button id='towrite" + i + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal" + i + "' data-whatever='@mdo' value= '" + i + " " + allform[j].allanswers[z]._id + "'>click to write</button>";   
                                     quest = quest + "<div class='modal fade' id='exampleModal" + i + "' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'><div class='modal-dialog' role='document'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <h4 class='modal-title' id='exampleModalLabel'>Opinion</h4></div><div class='modal-body'><form><div class='form-group'><label for='message-text' class='control-label'>Message:</label><textarea class='form-control' id='message-text" + i + "'></textarea></div></form></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>     <button id='"+ i +"-" + allform[j].allanswers[z]._id + "' type='button' onclick='sendinfo(value)' class='btn btn-primary part" + i + "' value= '" + i + " " + allform[j].allanswers[z]._id + "' >Send message</button>    </div></div></div></div>";
                                     //quest = quest + "<textarea style='margin: 2px 2px -15px 0px'></textarea>";
                                 }else {
-                                    quest = quest + "<button id='"+ i +"-" + allform[j].allanswers[y]._id + "' style='margin: 2px' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[j].allanswers[y]._id + "' onclick='sendinfo(value)'>" + allform[j].allanswers[y].text + "</button>";   
+                                    quest = quest + "<button id='"+ i +"-" + allform[j].allanswers[y]._id + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[j].allanswers[y]._id + "' onclick='sendinfo(value)'>" + allform[j].allanswers[y].text + "</button>";   
                                 }
                             }
                         }
@@ -387,7 +395,6 @@ exports.register = function(server, options, next) {
             path:'././Pagina',
             layout:  'index',
             context: {
-                    Good: saludo,
                     datenow: moment().format("MMM Do YY"),
                     header: allform[0].header + "<hr>",
                     questionsAns: quest,

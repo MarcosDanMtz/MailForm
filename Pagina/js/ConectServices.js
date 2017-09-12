@@ -60,6 +60,7 @@ exports.register = function (server, options, next) {
 
 
 
+
 function sendinfo (valueans) {
     var idform = "53375f30-9738-11e7-88d9-1113c020cefd";
     var questionNum = valueans.split(" ", 1);
@@ -153,9 +154,11 @@ function sendinfo (valueans) {
 }
 
 function close () {
-  window.close();  
+  //document.body.style.backgroundColor='#FFFFFF';
+  $("#body").empty();
+  $("#body").append('<h2 style="text-align: center;">Sent</h2>');
+  console.log("hoal");
 }
-
 
 exports.register.attributes = {
     name: 'routes-clientrequest'

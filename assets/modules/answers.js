@@ -11,7 +11,7 @@ exports.register = function(server, options, next) {
 
 
     var idform = "53375f30-9738-11e7-88d9-1113c020cefd";
-    //allformbyidforans (idform);
+    allformbyidforans (idform);
 
     function allformbyidforans (id) {
         console.log('rs');
@@ -51,7 +51,7 @@ exports.register = function(server, options, next) {
                             console.log(docss[0].text);
                             console.log(anstext.length);
                             if (anstext.length ==  docs[0].questions.length){
-                                console.log("Estoy dentro");
+                                //console.log(docs);
                                 fillformAnswers(docs, anstext);
                             }
                         }
@@ -89,7 +89,7 @@ exports.register = function(server, options, next) {
 
 
     function fillformAnswers(form, ans){
-        console.log(ans);
+        //console.log(form);
 
         var d = new Date();
         var saludo;
@@ -107,14 +107,18 @@ exports.register = function(server, options, next) {
         }
 
         for (var i = 0; i <= form[0].questions.length - 1; i++) {
-            quest = quest + "<div class=' part" + i + "'><p>  [ " + form[0].allquestions[i].status + " ] " + form[0].allquestions[i].text + "</p>";
-            if (form[0].questions[i].answerid=="278ac4e0-96f1-11e7-a1a3-7fbc3871829a")
-            {
-                quest = quest + "<textarea disabled>" + form[0].questions[i].answer + "</textarea>";
-                quest = quest + "<hr></div>";
-            }else{
-                quest = quest + "<button style='margin: 2px;' type='button' class='btn btn-primary btn-sm' >" + ans[i] + "</button>";
-                quest = quest + "<hr></div>";
+            for (var j = 0; j <= form[0].questions.length - 1; j++){
+                if (form[0].questions[i].idquestion == form[0].allquestions[j]._id) {
+                    quest = quest + "<div class=' part" + i + "'><p>  [ " + form[0].allquestions[j].status + " ] " + form[0].allquestions[j].text + "</p>";
+                    if (form[0].questions[i].answerid=="278ac4e0-96f1-11e7-a1a3-7fbc3871829a")
+                    {
+                        quest = quest + "<label style = 'background-color: #CECEF6'>" + form[0].questions[i].answer + "</label>";
+                        quest = quest + "<hr></div>";
+                    }else{
+                        quest = quest + "<button style='margin: 2px;' type='button' class='btn btn-primary btn-sm' >" + ans[i] + "</button>";
+                        quest = quest + "<hr></div>";
+                    }
+                }
             }
         }
         server.views({

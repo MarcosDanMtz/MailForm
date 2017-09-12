@@ -71,6 +71,7 @@ function sendinfo (valueans) {
     //console.log(idquestion);
     $.ajax({
     url: "https://wmmailform.herokuapp.com/formsid/" + idform
+    //url: "http://localhost:3000/formsid/" + idform
     }).then(function(updateform) {
       update(updateform);
       
@@ -148,9 +149,7 @@ function sendinfo (valueans) {
     //$(".part" + questionNum).attr("class")
     
 
-    //$(".part" + questionNum).css("background", "#85C1E9");
-    console.log('tremendo AAAAA');
-    
+    //$(".part" + questionNum).css("background", "#85C1E9");    
 }
 
 function close () {

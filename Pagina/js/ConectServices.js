@@ -72,8 +72,8 @@ function sendinfo (valueans) {
 
     //console.log(idquestion);
     $.ajax({
-    //url: "https://wmmailform.herokuapp.com/formsid/" + idform
-    url: "http://localhost:3000/formsid/" + idform
+    url: "https://wmmailform.herokuapp.com/formsid/" + idform
+    //url: "http://localhost:3000/formsid/" + idform
     }).then(function(updateform) {
       update(updateform);
       
@@ -125,8 +125,8 @@ function sendinfo (valueans) {
                   'Accept' : 'application/json',
                   'Content-Type' : 'application/json'
               },
-              url : 'http://localhost:3000/forms/' + idform,
-              //url : 'https://wmmailform.herokuapp.com/forms/' + idform,
+              //url : 'http://localhost:3000/forms/' + idform,
+              url : 'https://wmmailform.herokuapp.com/forms/' + idform,
               type : 'PATCH',
               data : infosendstringarr,
               success : function(response, textStatus, jqXhr) {
@@ -158,7 +158,8 @@ function close () {
   //document.body.style.backgroundColor='#FFFFFF';
   $("#body").empty();
   $("#body").append('<h1 style="text-align: center;">Sent</h1>');
-  $("#body").append('<div class="animated lightSpeedOut"><img style="text-align: center;" width="120px" height="120px" src="http://localhost:3000/img/send.png" alt="send-ms" height="42" width="42"></div>');
+  //$("#body").append('<div class="animated lightSpeedOut"><img style="text-align: center;" width="120px" height="120px" src="http://localhost:3000/img/send.png" alt="send-ms" height="42" width="42"></div>');
+  $("#body").append('<div class="animated lightSpeedOut"><img style="text-align: center;" width="120px" height="120px" src="https://wmmailform.herokuapp.com/img/send.png" alt="send-ms" height="42" width="42"></div>');
   $("#body").append('<h4 style="text-align: center;">Information send, Thaks!</h4>');
   console.log("hoal");
 }

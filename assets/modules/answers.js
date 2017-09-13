@@ -14,7 +14,6 @@ exports.register = function(server, options, next) {
     allformbyidforans (idform);
 
     function allformbyidforans (id) {
-        console.log('rs');
         var anstext = [];
         var anstosend = [];
         db.forms.aggregate([
@@ -48,8 +47,8 @@ exports.register = function(server, options, next) {
                         if (!docss == [])
                         {
                             anstext.push(docss[0].text);
-                            console.log(docss[0].text);
-                            console.log(anstext.length);
+                            //console.log(docss[0].text);
+                            //console.log(anstext.length);
                             if (anstext.length ==  docs[0].questions.length){
                                 //console.log(docs);
                                 fillformAnswers(docs, anstext);
@@ -93,7 +92,7 @@ exports.register = function(server, options, next) {
 
         var d = new Date();
         var saludo;
-
+        
         var curr_date = d.getDate();
         var curr_month = d.getMonth() + 1; //Months are zero based
         var curr_year = d.getFullYear();

@@ -10,17 +10,45 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
 	<!--<link rel="stylesheet" type="text/css" href="https://www.dropbox.com/s/l2glrey3hd47j2p/bootstrap.css?dl=0" crossorigin="anonymous">-->
+	<style type="text/css">
+  		#headertop { text-align: center; 
+  					color: #ffffff;
+  					margin:  0 -20px;
+  					
+					background: -moz-linear-gradient(141deg, rgba(0,76,145,1) 0%, rgba(0,76,145,1) 23%, rgba(0,125,198,1) 77%, rgba(0,125,198,1) 100%); /* ff3.6+ */
+					background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(0,125,198,1)), color-stop(23%, rgba(0,125,198,1)), color-stop(77%, rgba(0,76,145,1)), color-stop(100%, rgba(0,76,145,1))); /* safari4+,chrome */
+					background: -webkit-linear-gradient(141deg, rgba(0,76,145,1) 0%, rgba(0,76,145,1) 23%, rgba(0,125,198,1) 77%, rgba(0,125,198,1) 100%); /* safari5.1+,chrome10+ */
+					background: -o-linear-gradient(141deg, rgba(0,76,145,1) 0%, rgba(0,76,145,1) 23%, rgba(0,125,198,1) 77%, rgba(0,125,198,1) 100%); /* opera 11.10+ */
+					background: -ms-linear-gradient(141deg, rgba(0,76,145,1) 0%, rgba(0,76,145,1) 23%, rgba(0,125,198,1) 77%, rgba(0,125,198,1) 100%); /* ie10+ */
+					background: linear-gradient(309deg, rgba(0,76,145,1) 0%, rgba(0,76,145,1) 23%, rgba(0,125,198,1) 77%, rgba(0,125,198,1) 100%); /* w3c */
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007dc6', endColorstr='#004c91',GradientType=1 ); /* ie6-9 */
+  						}
+		#footerbtn{
+			margin-bottom: 35px;
+
+		}
+	</style>
 </head>
 <body  style="background-color:#ffffff;" id="body">
-	<div class="container">
-		
-		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-8"></div>
-			<div class="col-xs-6 col-md-4">
-				<h4><div id="header-form">Date: {{{ datenow }}}</div></h4>
-			</div>
-		</div> 
+	<div class="container-fluid">
 
+		<div id="headertop">
+			<div class="row">
+				<div class="col-md-12">
+					<div>
+						<h2>GTSMX INNOVATION</h2>
+						<p>Weekly Updates</p>
+					</div>
+
+				</div>
+			</div> 
+
+			<div class="row">
+				<div class="col-md-12">
+					<h4><div id="time">{{{ datenow }}}</div></h4>
+				</div>
+			</div> 
+		</div>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -43,7 +71,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div id="body-form" style="margin-left: 40%;"><a href="javascript:close();"><button type="button" class="btn btn-success">Finish</button></a></div>
+				<div id="footerbtn" style="margin-left: 40%;"><a href="javascript:close();"><button type="button" class="btn btn-success">Finish</button></a></div>
 			</div>
 			
 		</div>

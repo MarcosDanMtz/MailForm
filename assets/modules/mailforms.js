@@ -395,8 +395,8 @@ exports.register = function(server, options, next) {
             path:'././Pagina',
             layout:  'index',
             context: {
-                    datenow: moment().format("MMM Do YY"),
-                    header: allform[0].header + "<hr>",
+                    datenow: moment().format('MMMM Do YYYY'), 
+                    //header: allform[0].header + "<hr>",
                     questionsAns: quest,
                     footer: allform[0].footer
             },

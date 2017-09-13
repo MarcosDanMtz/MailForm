@@ -97,7 +97,8 @@ function sendinfo (valueans) {
       console.log(form);
 
       var dateStr = new Date();
-
+      $(".part" + questionNum).attr("class","btn btn-default btn-sm part" + questionNum);
+      $(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
       if(idquestion == '278ac4e0-96f1-11e7-a1a3-7fbc3871829a'){
 
         if ($("#message-text" + questionNum).val() === "") {
@@ -105,8 +106,7 @@ function sendinfo (valueans) {
         }else {
           form[0].questions[questionNum].answerid = idquestion;
           form[0].questions[questionNum].answer = $("#message-text" + questionNum).val();
-          $(".part" + questionNum).attr("class","btn btn-default btn-sm part" + questionNum);
-          $(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
+          
           $("#towrite" + questionNum).attr("class","btn btn-primary btn-sm part" + questionNum);
           $("#towrite" + questionNum).attr("style","color: #ffffff; background-color: #004c91");
         }        
@@ -114,8 +114,8 @@ function sendinfo (valueans) {
         form[0].questions[questionNum].answer = "";
         form[0].questions[questionNum].answerid = idquestion;
         //$("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary");
-        $(".part" + questionNum).attr("class","btn btn-default btn-sm part" + questionNum);
-        $(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
+        //$(".part" + questionNum).attr("class","btn btn-default btn-sm part" + questionNum);
+        //$(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
         $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary btn-sm part" + questionNum);
         $("#"+ questionNum +"-"+ idquestion).attr("style","color: #ffffff; background-color: #004c91");
       }

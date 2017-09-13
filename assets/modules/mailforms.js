@@ -7,6 +7,8 @@ var moment = require('moment');
 exports.register = function(server, options, next) {
 
     const db = server.app.db;
+    //54f79290-9684-11e7-bc74-23c934c137bf testing
+    //53375f30-9738-11e7-88d9-1113c020cefd  real
     var idform = "53375f30-9738-11e7-88d9-1113c020cefd";
     //Modifical id para nuevo form
     

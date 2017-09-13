@@ -67,8 +67,9 @@ function sendinfo (valueans) {
     var inicio = questionNum.length + 1;
     var fin = valueans.length;
     var idquestion = valueans.substring(inicio, fin);
-    $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary btn-sm part" + questionNum);
-    $("#"+ questionNum +"-"+ idquestion).attr("style","color: #ffffff; background-color: #004c91");
+
+    //$("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary btn-sm part" + questionNum);
+    //$("#"+ questionNum +"-"+ idquestion).attr("style","color: #ffffff; background-color: #004c91");
 
     //console.log(idquestion);
     $.ajax({
@@ -104,12 +105,19 @@ function sendinfo (valueans) {
         }else {
           form[0].questions[questionNum].answerid = idquestion;
           form[0].questions[questionNum].answer = $("#message-text" + questionNum).val();
-          $("#towrite" + questionNum).attr("class","btn btn-primary");
+          $(".part" + questionNum).attr("class","btn btn-default btn-sm part" + questionNum);
+          $(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
+          $("#towrite" + questionNum).attr("class","btn btn-primary btn-sm part" + questionNum);
+          $("#towrite" + questionNum).attr("style","color: #ffffff; background-color: #004c91");
         }        
       }else {
         form[0].questions[questionNum].answer = "";
         form[0].questions[questionNum].answerid = idquestion;
-        $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary");
+        //$("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary");
+        $(".part" + questionNum).attr("class","btn btn-default btn-sm part" + questionNum);
+        $(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
+        $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary btn-sm part" + questionNum);
+        $("#"+ questionNum +"-"+ idquestion).attr("style","color: #ffffff; background-color: #004c91");
       }
       form[0].questions[questionNum].dateanswered = dateStr.toISOString();
       delete form[0]._id;
@@ -160,7 +168,7 @@ function close () {
   $("#body").append('<h1 style="text-align: center;">Sent</h1>');
   //$("#body").append('<div class="animated lightSpeedOut"><img style="text-align: center;" width="120px" height="120px" src="http://localhost:3000/img/send.png" alt="send-ms" height="42" width="42"></div>');
   $("#body").append('<div class="animated lightSpeedOut"><img style="text-align: center;" width="120px" height="120px" src="https://wmmailform.herokuapp.com/img/send.png" alt="send-ms" height="42" width="42"></div>');
-  $("#body").append('<h4 style="text-align: center;">Information send, Thanks!</h4>');
+  $("#body").append('<h4 style="text-align: center;">Information sent, Thanks!</h4>');
   console.log("hoal");
 }
 

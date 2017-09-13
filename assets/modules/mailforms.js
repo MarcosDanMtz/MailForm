@@ -362,7 +362,7 @@ exports.register = function(server, options, next) {
             for (var j = 0; j <= allform[0].questions.length - 1; j++){
                 if (allform[i].questions[i].idquestion == allform[j].all._id) {
                     //console.log(allform[j].all._i);
-                    quest = quest + "<div class='div" + j + "'><p> <strong>[ " + allform[j].all.status + " ]</strong> " + allform[j].all.text + "</p>";
+                    quest = quest + "<div class='div" + i + "'><p> <strong>[ " + allform[j].all.status + " ]</strong> " + allform[j].all.text + "</p>";
                     for (var z = 0; z <= allform[j].all.answers.length - 1; z++) {
                         for (var y = 0; y <= allform[j].all.answers.length - 1; y++) {
                             if (allform[j].all.answers[z].id_answer == allform[j].allanswers[y]._id) {
@@ -370,11 +370,11 @@ exports.register = function(server, options, next) {
                                 if (allform[j].allanswers[z]._id == "278ac4e0-96f1-11e7-a1a3-7fbc3871829a")
                                 {
                                     //quest = quest + "<button id='"+ i +"-" + allform[i].allanswers[z]._id + "' style='margin: 2px' type='button' class='btn btn-default btn-sm part" + i + "'        data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo'      value= '" + i + " " + allform[i].allanswers[z]._id + "'>" + allform[i].allanswers[z].text + "</button>";   
-                                    quest = quest + "<button id='towrite" + i + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal" + i + "' data-whatever='@mdo' value= '" + i + " " + allform[j].allanswers[z]._id + "'>click to write</button>";   
+                                    quest = quest + "<button id='towrite" + i + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm part" + i+ "' data-toggle='modal' data-target='#exampleModal" + i + "' data-whatever='@mdo' value= '" + i + " " + allform[j].allanswers[z]._id + "'>click to write</button>";   
                                     quest = quest + "<div class='modal fade' id='exampleModal" + i + "' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'><div class='modal-dialog' role='document'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <h4 class='modal-title' id='exampleModalLabel'>Opinion</h4></div><div class='modal-body'><form><div class='form-group'><label for='message-text' class='control-label'>Message:</label><textarea class='form-control' id='message-text" + i + "'></textarea></div></form></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>     <button id='"+ i +"-" + allform[j].allanswers[z]._id + "' type='button' onclick='sendinfo(value)' class='btn btn-primary part" + i + "' value= '" + i + " " + allform[j].allanswers[z]._id + "' >Send message</button>    </div></div></div></div>";
                                     //quest = quest + "<textarea style='margin: 2px 2px -15px 0px'></textarea>";
                                 }else {
-                                    quest = quest + "<button id='"+ i +"-" + allform[j].allanswers[y]._id + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[j].allanswers[y]._id + "' onclick='sendinfo(value)'>" + allform[j].allanswers[y].text + "</button>";   
+                                    quest = quest + "<button id='"+ i +"-" + allform[j].allanswers[z]._id + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[j].allanswers[z]._id + "' onclick='sendinfo(value)'>" + allform[j].allanswers[z].text + "</button>";   
                                 }
                             }
                         }

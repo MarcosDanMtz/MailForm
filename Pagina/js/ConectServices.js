@@ -70,7 +70,8 @@ function sendinfo (valueans) {
 
     //$("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary btn-sm part" + questionNum);
     //$("#"+ questionNum +"-"+ idquestion).attr("style","color: #ffffff; background-color: #004c91");
-
+    $(".part" + questionNum).attr("class","btn btn-default btn-sm part" + questionNum);
+    $(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
     //console.log(idquestion);
     $.ajax({
     url: "https://wmmailform.herokuapp.com/formsid/" + idform
@@ -97,8 +98,6 @@ function sendinfo (valueans) {
       console.log(form);
 
       var dateStr = new Date();
-      $(".part" + questionNum).attr("class","btn btn-default btn-sm part" + questionNum);
-      $(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
       if(idquestion == '278ac4e0-96f1-11e7-a1a3-7fbc3871829a'){
 
         if ($("#message-text" + questionNum).val() === "") {

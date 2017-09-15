@@ -23,7 +23,7 @@ embed con modal------------------------------------------------
 
 embed solo------------------------------------------------
 
-<embed src='nombre_archivo.pdf' type='application/pdf' width='800' height='600'></embed>
+<embed src='nombre_archivo.pdf' type='application/pdf' width='800' height='600' scrolling='yes'></embed>
 
 Modal solo-----------------------------------
 

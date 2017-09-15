@@ -11,7 +11,7 @@ exports.register = function(server, options, next) {
     //53375f30-9738-11e7-88d9-1113c020cefd  real
     var idform = "53375f30-9738-11e7-88d9-1113c020cefd";
     //Modifical id para nuevo form
-    var version = 2;
+    var version = 3;
     
     allformbyid (idform);
     

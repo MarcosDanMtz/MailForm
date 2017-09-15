@@ -17,6 +17,9 @@ iframe solo responsivo ---------------------------------
 
 
 <iframe style='border:1px solid #666CCC' src='https://wmmailform.herokuapp.com/files/file.pdf' height='250px' width='250px' ></iframe>
+
+
+<iframe src='https://wmmailform.herokuapp.com/files/file.pdf' height='250px' width='250px frameborder='0' marginheight='0' marginwidth='0'>Loading...</iframe>
 embed con modal------------------------------------------------
 
 

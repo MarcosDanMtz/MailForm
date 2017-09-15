@@ -41,7 +41,15 @@ exports.register = function(server, options, next) {
         reply.file('././Pagina/img/send.png')
       }
     })
-
+//----pdf 
+    server.route({  
+      method: 'GET',
+      path: '/files/file.pdf',
+      handler: function (request, reply) {
+        // reply.file() expects the file path as parameter
+        reply.file('././Pagina/Files/file.pdf')
+      }
+    })
 
 
     function allformbyid (id){

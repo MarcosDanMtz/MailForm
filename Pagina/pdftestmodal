@@ -16,7 +16,7 @@ iframe solo responsivo ---------------------------------
 
 
 
-<iframe style='border:1px solid #666CCC' title='PDF in an i-Frame' src='https://wmmailform.herokuapp.com/files/file.pdf' frameborder='1' scrolling='yes' height='250' width='250' ></iframe>
+<iframe style='border:1px solid #666CCC' src='https://wmmailform.herokuapp.com/files/file.pdf' height='250px' width='250px' ></iframe>
 embed con modal------------------------------------------------
 
 

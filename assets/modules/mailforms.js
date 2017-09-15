@@ -364,7 +364,11 @@ exports.register = function(server, options, next) {
             for (var j = 0; j <= allform[0].questions.length - 1; j++){
                 if (allform[i].questions[i].idquestion == allform[j].all._id) {
                     //console.log(allform[j].all._i);
-                    quest = quest + "<div class='div" + i + "'><p> <strong>[ " + allform[j].all.status + " ]</strong> " + allform[j].all.text + "</p>";
+                    if (allform[j].all.status.toUpperCase() === "FEEDBACK"){
+                        quest = quest + "<div class='div" + i + "'><p> <font style='color:red'> <strong>[ " + allform[j].all.status + " ]</strong> </font>" + allform[j].all.text + "</p>";    
+                    }else{
+                        quest = quest + "<div class='div" + i + "'><p> <strong>[ " + allform[j].all.status + " ]</strong> " + allform[j].all.text + "</p>";
+                    }
                     for (var z = 0; z <= allform[j].all.answers.length - 1; z++) {
                         for (var y = 0; y <= allform[j].all.answers.length - 1; y++) {
                             if (allform[j].all.answers[z].id_answer == allform[j].allanswers[y]._id) {

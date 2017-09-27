@@ -8,9 +8,44 @@ exports.register = function(server, options, next) {
 
     const db = server.app.db;
 
+
+
+    //Creating js for the view
+    server.route({  
+      method: 'GET',
+      path: '/admin-question/js/question.js',
+      handler: function (request, reply) {
+        // reply.file() expects the file path as parameter
+        reply.file('././Pagina/admin-questions/admin-questions-js/questAdmin.js')
+      }
+    })
+
+
+
+    //Creating view
+    server.views({
+            engines: {
+              html: require('handlebars')
+            },
+            path:'././Pagina/admin-questions/',
+            layout:  'admin-questions',
+            context: {
+                    
+            }
+        })
+
+    server.route({  
+      method: 'GET',
+      path: '/admin-questions',
+      handler: {
+        view: 'admin-questions'
+      }
+    })
+
     //PLACEHOLDER
     //--------------------------------------------------------------
     //Here the routes definitions will be inserted in the next steps...
+
 
     server.route({
         method: 'GET',
@@ -33,6 +68,7 @@ exports.register = function(server, options, next) {
 
         }
     });
+
 
     server.route({
         method: 'GET',

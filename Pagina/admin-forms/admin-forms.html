@@ -4,63 +4,81 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Create Form</title>
+	<title>Admin your from</title>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
+	<style type="text/css">
+		#text-status{
+			text-transform: uppercase;
+		}
+	</style>
 </head>
 <body>
-	<div class="container">
 
+	<div class="container">
 		<div id="headertop">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="formasn">
 						<div>
 							<h2>GTSMX INNOVATION</h2>
-							<p>Answers Admin</p>
+							<p>Forms Admin </p>
 						</div>
 					</div>
 				</div>
 			</div> 
 		</div>
 
+		<hr>
+
 		<div class="row">
 			<div class="col-md-12">
-
-
-
-
-
-				 <!-- Nav tabs -->
+		 <!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
-				    <li role="presentation" onclick="clearall();" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Create a new Answer</a></li>
-				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Delete/Update Answers</a></li>
+				    <li role="presentation" class="active" onclick="clearUpdate();"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Create a new form</a></li>
+				    <li role="presentation" onclick="clearCreate();"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Update Form</a></li>
 				</ul>
 
 			  <!-- Tab panes -->
 				<div class="tab-content">
 					<!--New Answer-->
 				    <div role="tabpanel" class="tab-pane active" id="home">
+				    	<div class="form-group">
+							<label for="exampleInputEmail1">keywords: </label>
+							<input type="text" class="form-control" id="keywords-from">
+						</div>
 						<div class="form-group">
-						    <label for="exampleInputEmail1">New Answer</label>
-						    <input type="email" class="form-control" id="text-ans" placeholder="Send me notes">
+							<label for="exampleInputEmail1">Write a footer</label>
+							<input type="text" class="form-control" id="text-footer" placeholder="Ready for another great week?">
 						</div>
 						<!-- Contextual button for informational alert messages -->
-						<button type="button" class="btn btn-info" onclick="SaveAns();">Save Answer</button>
-						
+						<button type="button" class="btn btn-info" onclick="showquest();">Show Questions</button>
+
+						<hr>
+
+						<div id="fillQuestAsOpc">
+					
+						</div>
+
+
+		
 				    </div>
 				    <div role="tabpanel" class="tab-pane" id="profile">
-						<button type="button" class="btn btn-primary btn-lg btn-block" onclick="getAllAns()">Get All Answers</button>	
+				    	<div class="form-group">
+							<label for="exampleInputEmail1">keywords:</label>
+							<input type="text" class="form-control" id="formToFind" placeholder="A meeting with Walmex Digital Labs has been scheduled to..."><br>
+							<button type="button" class="btn btn-primary btn-lg btn-block form-control" onclick="searchForm();">Search</button>
+						</div>
 						<hr>
 						<div id="allAns-table">
 							<table class="table table-striped"> 
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>Answer</th>
-										<th>Value</th>
+										<th>keywords</th>
+										<th>footer</th>
 									</tr>
 								</thead>
 								<tbody id="tbody">
@@ -69,17 +87,26 @@
 							</table>
 							
 						</div>
+						<hr>
+						<div id="infoFormToUpdate">
+							
+						</div>
+						<div id="questionsPlaceUpdate">
+							
+						</div>
 				    </div>
 				</div>
 				<hr>
-				<div id="whatToDo">
+				<!-- <div id="whatToDo">
 					
-				</div>	
+				</div>	 -->
 			</div>
 		</div>
 
+
 	</div>
-	<!-- <script src="http://localhost:3000/admin-ans/js/ans.js"></script> -->
-	<script src="https://wmmailform.herokuapp.com/admin-ans/js/ans.js"></script>
+
+	<!-- <script src="http://localhost:3000/admin-forms/js/admin-fomrs.js"></script> -->
+	<script src="https://wmmailform.herokuapp.com/formasn/admin-forms/js/admin-fomrs.js"></script>
 </body>
 </html>

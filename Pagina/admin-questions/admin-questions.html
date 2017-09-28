@@ -39,7 +39,7 @@
 		 <!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
 				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Create a new Question</a></li>
-				    <li role="presentation"><a href="#profile" onclick="loadQuestions();" aria-controls="profile" role="tab" data-toggle="tab">Update Questions</a></li>
+				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Update Questions</a></li>
 				</ul>
 
 			  <!-- Tab panes -->
@@ -62,9 +62,16 @@
 						<div id="fillAnsAsOpc">
 					
 						</div>
+
+
 						
 				    </div>
 				    <div role="tabpanel" class="tab-pane" id="profile">
+				    	<div class="form-group">
+							<label for="exampleInputEmail1">Question to find:</label>
+							<input type="text" class="form-control" id="questionToFind" placeholder="A meeting with Walmex Digital Labs has been scheduled to..."><br>
+							<button type="button" class="btn btn-primary btn-lg btn-block form-control" onclick="searchAns();">Search</button>
+						</div>
 						<hr>
 						<div id="allAns-table">
 							<table class="table table-striped"> 
@@ -80,6 +87,13 @@
 							</table>
 							
 						</div>
+						<hr>
+						<div id="updateQuestion">
+							
+						</div>
+						<div id="answersPlaceUpdate">
+							
+						</div>
 				    </div>
 				</div>
 				<hr>
@@ -90,6 +104,7 @@
 		</div>
 
 	</div>
-<script src="http://localhost:3000/admin-question/js/question.js"></script>
+	<script src="https://wmmailform.herokuapp.com/admin-question/js/question.js"></script>
+<!-- <script src="http://localhost:3000/admin-question/js/question.js"></script> -->
 </body>
 </html>

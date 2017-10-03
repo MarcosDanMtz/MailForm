@@ -18,7 +18,7 @@ function SaveAns () {
 	                  'Content-Type' : 'application/json'
 	              },
 	              //url : 'http://localhost:3000/answers',
-	              url: 'https://wmmailform.herokuapp.com/answers'
+	              url: 'https://wmmailform.herokuapp.com/answers',
 	              type : 'POST',
 	              data : tosenans,
 	              success : function(response, textStatus, jqXhr) {

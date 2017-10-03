@@ -55,7 +55,7 @@ server.register(
         require('./assets/modules/mailforms'),
         require('./assets/modules/answers'),
         require('./assets/modules/questions'),
-        require('./Pagina/js/ConectServices.js'),
+        //require('./Pagina/js/ConectServices.js'),
         require('./assets/modules/answers-admin.js'),
         require('./assets/modules/admin-forms.js')
         //require('./assets/gastos'),

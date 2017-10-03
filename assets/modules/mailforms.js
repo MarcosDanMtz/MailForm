@@ -1,10 +1,12 @@
 const Boom  = require('boom');
 const uuid  = require('node-uuid');
 const Joi   = require('joi');
+//var url = request.connection.info.protocol + '://' + request.info.host + request.url.path;
+//const url = request.connection.info.protocol 
 var moment = require('moment');
 
 
-exports.register = function(server, options, next) {
+exports.register = function(server, options, next, request) {
 
     const db = server.app.db;
     //54f79290-9684-11e7-bc74-23c934c137bf testing
@@ -14,8 +16,6 @@ exports.register = function(server, options, next) {
     var version = 15;
     
     allformbyid (idform);
-    
-
 
     //----------------------------------------------------------------------
     //PLACEHOLDER
@@ -403,6 +403,7 @@ exports.register = function(server, options, next) {
         }else {
             saludo = "Good Morning"
         }
+
         server.views({
             engines: {
               html: require('handlebars')
@@ -410,21 +411,32 @@ exports.register = function(server, options, next) {
             path:'././Pagina',
             layout:  'index',
             context: {
-                    datenow: moment().format('MMMM Do YYYY'), 
+                    datenow: moment().format('MMMM Do YYYY') 
                     //header: allform[0].header + "<hr>",
-                    questionsAns: quest,
-                    footer: allform[0].footer
+                    //questionsAns: quest,
+                    //footer: allform[0].footer
             },
             helpersPath: '././Pagina/js'
         })
 
-        server.route({  
+        /*server.route({  
           method: 'GET',
-          path: '/formasn',
+          path: '/formasn' ,
           handler: {
             view: 'index'
           }
+        })*/
+
+        server.route({  
+          method: 'GET',
+          path: '/formasn' ,
+          handler: function (request, reply) {
+    // access request’s query parameter
+            var params = request.query
+            reply.view('index')
+          }
         })
+
     }
 
 //------------Respuestas

@@ -103,7 +103,7 @@ function saveQuestion () {
 			  'Content-Type' : 'application/json'
 			},
 			//url : 'http://localhost:3000/questions',
-			url : 'https://wmmailform.herokuapp.com/formasn/questions',
+			url : 'https://wmmailform.herokuapp.com/questions',
 			type : 'POST',
 			data : questionTosend,
 			success : function(response, textStatus, jqXhr) {

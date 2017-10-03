@@ -165,13 +165,13 @@ function saveQuestionUpdate () {
 	catch (err){
 		alert("error please try again!!");
 	}
-	// location.href ="http://localhost:3000/admin-questions";
+	//location.href ="http://localhost:3000/admin-questions";
 	location.href ="https://wmmailform.herokuapp.com/admin-questions";
 }
 
 
 function loadQuestions () {
-	//var response = httpGet("http://localhost:3000/questions")
+	//var response = httpGet("http://localhost:3000/questions");
 	var response = httpGet("https://wmmailform.herokuapp.com/questions");
 	var objAllQuest = JSON.parse(response);
 	var tableIn = document.getElementById("tbody");
@@ -186,7 +186,7 @@ function loadQuestions () {
 
 function searchAns () {
 	//var response = httpGet("http://localhost:3000/questions");
-	var response = httpGet("https://wmmailform.herokuapp.com/questions")
+	var response = httpGet("https://wmmailform.herokuapp.com/questions");
 	var objAllQuest = JSON.parse(response);
 	var texto = document.getElementById("questionToFind").value.toString().toLowerCase();
 

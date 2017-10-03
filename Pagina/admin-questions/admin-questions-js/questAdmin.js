@@ -123,7 +123,7 @@ function saveQuestion () {
 		alert("error please try again!!");
 	}
 	//location.href ="http://localhost:3000/admin-questions";
-	location.href ="https://wmmailform.herokuapp.com/formasn/admin-questions";
+	location.href ="https://wmmailform.herokuapp.com/admin-questions";
 }
 
 function saveQuestionUpdate () {

@@ -33,7 +33,7 @@ function SaveAns () {
 	              }
 	          });
 		document.getElementById("text-ans").value = "";
-		alert("Answer create");	
+		alert("Answer created");	
 	}
 }		
 
@@ -61,14 +61,14 @@ function CellSelect (obj) {
 
 	//fill the delet or update
 	var Dell_Update=document.getElementById("whatToDo");
-	Dell_Update.innerHTML = "<select onchange='chagedrop(value);' class='form-control'><option>Escoge una opción</option><option>Update</option><option>Delete</option></select>";
+	Dell_Update.innerHTML = "<select onchange='chagedrop(value);' class='form-control'><option>Chose an option</option><option>Update</option><option>Delete</option></select>";
 }
 
 function chagedrop (opc) {
 	var Dell_Update_c=document.getElementById("whatToDo");
 	Dell_Update_c.innerHTML = "";
 	if (opc.toUpperCase()=="DELETE"){
-		Dell_Update_c.innerHTML += "<hr><button type='button' onclick='deleteAns()' class='btn btn-primary btn-lg btn-block'>are you sure to delete it?</button>"
+		Dell_Update_c.innerHTML += "<hr><button type='button' onclick='deleteAns()' class='btn btn-primary btn-lg btn-block'>are you sure?</button>"
 	}else if (opc.toUpperCase()=="UPDATE"){
 		Dell_Update_c.innerHTML += "<div class='form-group'><label for='updateAns'>Update Answer</label><input type='text' class='form-control' id='updateans' placeholder='Send me notes'></div>"
 		Dell_Update_c.innerHTML += "<hr><button type='button' onclick='Updateans()' class='btn btn-primary btn-lg btn-block'>Update</button>"

@@ -194,7 +194,7 @@ function updateForm () {
     alert("error please try again!!");
   }
   //location.href ="http://localhost:3000/admin-forms";
-  location.href ="https://wmmailform.herokuapp.com/formasn/admin-forms";
+  location.href ="https://wmmailform.herokuapp.com/admin-forms";
 }
 
 function clearUpdate () {

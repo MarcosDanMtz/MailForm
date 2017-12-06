@@ -12,10 +12,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
 	<!--<link rel="stylesheet" type="text/css" href="https://www.dropbox.com/s/l2glrey3hd47j2p/bootstrap.css?dl=0" crossorigin="anonymous">-->
 	<style type="text/css">
-  		#headertop { text-align: center; 
+  		#headertop { text-align: center;
   					color: #ffffff;
   					margin:  0 -20px;
-  					
+
 					background: -moz-linear-gradient(141deg, rgba(0,76,145,1) 0%, rgba(0,76,145,1) 23%, rgba(0,125,198,1) 77%, rgba(0,125,198,1) 100%); /* ff3.6+ */
 					background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(0,125,198,1)), color-stop(23%, rgba(0,125,198,1)), color-stop(77%, rgba(0,76,145,1)), color-stop(100%, rgba(0,76,145,1))); /* safari4+,chrome */
 					background: -webkit-linear-gradient(141deg, rgba(0,76,145,1) 0%, rgba(0,76,145,1) 23%, rgba(0,125,198,1) 77%, rgba(0,125,198,1) 100%); /* safari5.1+,chrome10+ */
@@ -51,7 +51,7 @@
 		     -moz-box-shadow: 4px 4px 14px #4f4f4f;
 		          box-shadow: 4px 4px 14px #4f4f4f;
 		}
-		  
+
 		/*
 		** Style the iframe
 		** =========================
@@ -63,9 +63,9 @@
 		  position: relative;
 		  height: 0;    /* gets height from padding-bottom */
 		  overflow: hidden;
-		  /* put following styles (necessary for overflow and 
+		  /* put following styles (necessary for overflow and
 		     scrolling handling) inline in .embed-responsive-element-wrapper around iframe because not stable in CSS
-		    -webkit-overflow-scrolling: touch; 
+		    -webkit-overflow-scrolling: touch;
 		                      overflow: auto; */
 		}
 		.responsive-wrapper img,
@@ -76,7 +76,7 @@
 		  left: 0;
 		  width: 100%;
 		  height: 100%;
-		   
+
 		  border-style: none;
 		  padding: 0;
 		  margin: 0;
@@ -119,13 +119,13 @@
 
 					</div>
 				</div>
-			</div> 
+			</div>
 
 			<div class="row">
 				<div class="col-md-12">
 					<h4><div id="time">{{{ datenow }}}</div></h4>
 				</div>
-			</div> 
+			</div>
 		</div>
 
 		<div class="row">
@@ -138,31 +138,32 @@
 			<div class="col-md-12">
 				<div id="body-form" ng-bind-html="expression">{{{ questionsAns }}}</div>
 			</div>
-			
+
 		</div>
 
 		<div class="row">
 			<div class="col-md-12">
 				<div id="fillQuestionAns"></div>
 			</div>
-			
+
 		</div>
 
 		<div class="row">
 			<div class="col-md-12">
 				<div id="body-form" ng-bind-html="expression">{{{ footer }}}</div><hr>
 			</div>
-			
+
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div id="footerbtn"><a href="javascript:close();"><button type="button" id="btnsend" class="btn btn-lg btn-block">Send</button></a></div>
+				<!-- <div id="footerbtn"><a href="javascript:close();"><button type="button" id="btnsend" class="btn btn-lg btn-block" onclick="forVariousUsers();">Send</button></a></div> -->
+				<div id="footerbtn"><button type="button" id="btnsend" class="btn btn-lg btn-block" onclick="forVariousUsers();">Send</button></div>
 			</div>
-			
+
 		</div>
 	</div>
 	<!-- listo -->
-	<!-- <script src="http://localhost:3000/files/js/ConectServices.js"></script> -->
-	<script src="https://wmmailform.herokuapp.com/files/js/ConectServices.js"></script>
+	<script src="http://localhost:3000/files/js/ConectServices.js"></script>
+	<!-- <script src="https://wmmailform.herokuapp.com/files/js/ConectServices.js"></script> -->
 </body>
 </html>

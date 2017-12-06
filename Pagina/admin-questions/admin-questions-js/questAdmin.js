@@ -5,8 +5,8 @@ function showAns (argument) {
 	}else {
 		answers = new Array();
 		console.log(answers);
-		//var allAns = httpGet("http://localhost:3000/answers");
-		var allAns = httpGet("https://wmmailform.herokuapp.com/answers");
+		var allAns = httpGet("http://localhost:3000/answers");
+		//var allAns = httpGet("https://wmmailform.herokuapp.com/answers");
 		var objAllAns = JSON.parse(allAns);
 		var tableIn = document.getElementById("fillAnsAsOpc");
 		tableIn.innerHTML = "";
@@ -32,11 +32,11 @@ function showAns (argument) {
 		ansjson.value = "valuejson";
 		var tosenans= JSON.stringify(ansjson);
 	}
-}*/	
+}*/
 
 function saveAnsforQuest (obj) {
 
-	if (obj.checked){	
+	if (obj.checked){
 		if (answers.length <= 3){
 			var answersAux = new Object();
 			answersAux.id_answer = obj.id;
@@ -44,7 +44,7 @@ function saveAnsforQuest (obj) {
 			var nauxRepeat=0;
 			console.log(answersAux);
 			console.log(answers);
-			
+
 		}else {
 			alert("limit exceeded");
 			answers.splice(answers.length,1);
@@ -63,13 +63,13 @@ function saveAnsforQuest (obj) {
 
 function saveAnsforQuestUpdate (obj) {
 
-	if (obj.checked){	
+	if (obj.checked){
 		if (answers.length <= 3){
 			var answersAux = new Object();
 			answersAux.id_answer = obj.id;
 			answers.push(answersAux);
 			var nauxRepeat=0;
-			
+
 		}else {
 			alert("limit exceeded");
 			answers.splice(answers.length,1);
@@ -102,8 +102,8 @@ function saveQuestion () {
 			  'Accept' : 'application/json',
 			  'Content-Type' : 'application/json'
 			},
-			//url : 'http://localhost:3000/questions',
-			url : 'https://wmmailform.herokuapp.com/questions',
+			url : 'http://localhost:3000/questions',
+			//url : 'https://wmmailform.herokuapp.com/questions',
 			type : 'POST',
 			data : questionTosend,
 			success : function(response, textStatus, jqXhr) {
@@ -122,8 +122,8 @@ function saveQuestion () {
 	catch (err){
 		alert("error please try again!!");
 	}
-	//location.href ="http://localhost:3000/admin-questions";
-	location.href ="https://wmmailform.herokuapp.com/admin-questions";
+	location.href ="http://localhost:3000/admin-questions";
+	//location.href ="https://wmmailform.herokuapp.com/admin-questions";
 }
 
 function saveQuestionUpdate () {
@@ -145,8 +145,8 @@ function saveQuestionUpdate () {
 			  'Accept' : 'application/json',
 			  'Content-Type' : 'application/json'
 			},
-			//url : 'http://localhost:3000/questions/' + objIdQuest.getAttribute("value"),
-			url : 'https://wmmailform.herokuapp.com/questions/' + objIdQuest.getAttribute("value"),
+			url : 'http://localhost:3000/questions/' + objIdQuest.getAttribute("value"),
+			//url : 'https://wmmailform.herokuapp.com/questions/' + objIdQuest.getAttribute("value"),
 			type : 'PATCH',
 			data : questionTosend,
 			success : function(response, textStatus, jqXhr) {
@@ -165,14 +165,14 @@ function saveQuestionUpdate () {
 	catch (err){
 		alert("error please try again!!");
 	}
-	//location.href ="http://localhost:3000/admin-questions";
-	location.href ="https://wmmailform.herokuapp.com/admin-questions";
+	location.href ="http://localhost:3000/admin-questions";
+	//location.href ="https://wmmailform.herokuapp.com/admin-questions";
 }
 
 
 function loadQuestions () {
-	//var response = httpGet("http://localhost:3000/questions");
-	var response = httpGet("https://wmmailform.herokuapp.com/questions");
+	var response = httpGet("http://localhost:3000/questions");
+	//var response = httpGet("https://wmmailform.herokuapp.com/questions");
 	var objAllQuest = JSON.parse(response);
 	var tableIn = document.getElementById("tbody");
 	tableIn.innerHTML = "";
@@ -185,8 +185,8 @@ function loadQuestions () {
 
 
 function searchAns () {
-	//var response = httpGet("http://localhost:3000/questions");
-	var response = httpGet("https://wmmailform.herokuapp.com/questions");
+	var response = httpGet("http://localhost:3000/questions");
+	//var response = httpGet("https://wmmailform.herokuapp.com/questions");
 	var objAllQuest = JSON.parse(response);
 	var texto = document.getElementById("questionToFind").value.toString().toLowerCase();
 
@@ -194,19 +194,19 @@ function searchAns () {
 		if (index.text.toLowerCase().indexOf(texto) != -1)
 		return index;
 	});
-	
+
 	var tableIn = document.getElementById("tbody");
 	tableIn.innerHTML = "";
 	for (var i = 0; i<resul.length; i++)
 	{
 		tableIn.innerHTML += "<tr onclick='CellSelect(this);' value='" + resul[i]._id + "'><td>" + resul[i]._id + "</td><td>" + resul[i].text + "</td></tr>";
 	}
-	
+
 }
 
 function CellSelect (obj) {
-	//var response = httpGet("http://localhost:3000/questions/" + obj.getAttribute('value'));
-	var response = httpGet("https://wmmailform.herokuapp.com/questions/" + obj.getAttribute('value'));
+	var response = httpGet("http://localhost:3000/questions/" + obj.getAttribute('value'));
+	//var response = httpGet("https://wmmailform.herokuapp.com/questions/" + obj.getAttribute('value'));
 	var objAllQuest = JSON.parse(response);
 	var tableIn = document.getElementById("tbody");
 	tableIn.innerHTML = "";
@@ -225,8 +225,8 @@ function showAnsUpdate () {
 		alert("Please write a question");
 	}else {
 		answers = new Array();
-		//var allAns = httpGet("http://localhost:3000/answers");
-		var allAns = httpGet("https://wmmailform.herokuapp.com/answers");
+		var allAns = httpGet("http://localhost:3000/answers");
+		//var allAns = httpGet("https://wmmailform.herokuapp.com/answers");
 		var objAllAns = JSON.parse(allAns);
 		var tableIn = document.getElementById("answersPlaceUpdate");
 		tableIn.innerHTML = "";
@@ -248,4 +248,4 @@ function httpGet(theUrl)
     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
     xmlHttp.send( null );
     return xmlHttp.responseText;
-}	
+}

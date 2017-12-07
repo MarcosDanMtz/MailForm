@@ -190,7 +190,7 @@ function forVariousUsers(){
                   'Content-Type' : 'application/json'
               },
               // url : 'http://localhost:3000/forms-answers',
-              url : 'https://wmmailform.herokuapp.com/forms/' + idform,
+              url : 'https://wmmailform.herokuapp.com/forms-answers',
               type : 'POST',
               data : tosenmultipleUs,
               success : function(response, textStatus, jqXhr) {

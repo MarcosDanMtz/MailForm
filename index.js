@@ -57,7 +57,8 @@ server.register(
         require('./assets/modules/questions'),
         //require('./Pagina/js/ConectServices.js'),
         require('./assets/modules/answers-admin.js'),
-        require('./assets/modules/admin-forms.js')
+        require('./assets/modules/admin-forms.js'),
+        require('./assets/modules/forms-answers.js')
         //require('./assets/gastos'),
         //require('./assets/gastosTipo'),
         //require('./assets/usuarios'),

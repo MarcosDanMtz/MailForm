@@ -5,8 +5,8 @@ function showquest () {
   }else {
     question = new Array();
     console.log(question);
-    //var allAns = httpGet("http://localhost:3000/questions");
-    var allAns = httpGet("https://wmmailform.herokuapp.com/questions");
+    var allAns = httpGet("http://localhost:3000/questions");
+    //var allAns = httpGet("https://wmmailform.herokuapp.com/questions");
     var objAllAns = JSON.parse(allAns);
     var tableIn = document.getElementById("fillQuestAsOpc");
     tableIn.innerHTML = "";
@@ -25,8 +25,8 @@ function saveQuestforForm (obj) {
   if (obj.checked){
 
       var availableToWrite = "false";
-      var checkQuestion = httpGet("https://wmmailform.herokuapp.com/questions/" + obj.id);
-      //var checkQuestion = httpGet("http://localhost:3000/questions/" + obj.id);
+      //var checkQuestion = httpGet("https://wmmailform.herokuapp.com/questions/" + obj.id);
+      var checkQuestion = httpGet("http://localhost:3000/questions/" + obj.id);
       var questionToValue = JSON.parse(checkQuestion);
 
       for (var i = 0; i < questionToValue[0].answers.length; i++) {
@@ -66,8 +66,8 @@ function saveForm () {
         'Accept' : 'application/json',
         'Content-Type' : 'application/json'
       },
-      //url : 'http://localhost:3000/forms',
-      url : 'https://wmmailform.herokuapp.com/forms',
+      url : 'http://localhost:3000/forms',
+      //url : 'https://wmmailform.herokuapp.com/forms',
       type : 'POST',
       data : formTosend,
       success : function(response, textStatus, jqXhr) {
@@ -86,16 +86,16 @@ function saveForm () {
   catch (err){
     alert("error please try again!!");
   }
-  //location.href ="http://localhost:3000/admin-forms";
-  location.href ="https://wmmailform.herokuapp.com/admin-forms";
+  location.href ="http://localhost:3000/admin-forms";
+  //location.href ="https://wmmailform.herokuapp.com/admin-forms";
 }
 
 
 
 
 function searchForm () {
-  //var response = httpGet("http://localhost:3000/forms")
-  var response = httpGet("https://wmmailform.herokuapp.com/forms")
+  var response = httpGet("http://localhost:3000/forms")
+  //var response = httpGet("https://wmmailform.herokuapp.com/forms")
   var objAllQuest = JSON.parse(response);
 
   var texto = document.getElementById("formToFind").value.toString().toLowerCase();
@@ -106,7 +106,7 @@ function searchForm () {
   });
 
   console.log(resul);
-  
+
   var tableIn = document.getElementById("tbody");
   tableIn.innerHTML = "";
   for (var i = 0; i<resul.length; i++)
@@ -114,13 +114,13 @@ function searchForm () {
 
     tableIn.innerHTML += "<tr onclick='CellSelect(this);' value='" + resul[i]._id + "'><td>" + (i+1) + "</td><td>" + resul[i].header + "</td><td>" + resul[i].footer + "</td></tr>";
   }
-  
+
 }
 
 function CellSelect (obj) {
 
-  //var response = httpGet("http://localhost:3000/answersforms/" + obj.getAttribute('value'));
-  var response = httpGet("https://wmmailform.herokuapp.com/answersforms/" + obj.getAttribute('value'));
+  var response = httpGet("http://localhost:3000/answersforms/" + obj.getAttribute('value'));
+  //var response = httpGet("https://wmmailform.herokuapp.com/answersforms/" + obj.getAttribute('value'));
   var objForm = JSON.parse(response);
   var tableIn = document.getElementById("tbody");
   tableIn.innerHTML = "";
@@ -132,20 +132,20 @@ function CellSelect (obj) {
   infoToFill.innerHTML += "<h4>Questions selected for this form:</h4>";
 
   for (var i = 0; i < objForm[0].allquestions.length; i++) {
-    infoToFill.innerHTML += "<p>" + (i+1) + "-" + objForm[0].allquestions[i].text + "</p>"  
+    infoToFill.innerHTML += "<p>" + (i+1) + "-" + objForm[0].allquestions[i].text + "</p>"
   }
-  
-  infoToFill.innerHTML += "<hr>"; 
+
+  infoToFill.innerHTML += "<hr>";
 
   var fillQuestions = document.getElementById("questionsPlaceUpdate");
   fillQuestions.innerHTML = "";
-  fillQuestions.innerHTML += "<div class='form-group'> <label for='exampleInputEmail1'>Keywords</label> <input type='text' class='form-control' id='text-keywordsUpdate' placeholder='" + objForm[0].header + "'> </div> <div class='form-group'> <label for='exampleInputEmail1'>Footer: </label> <textarea type='text' class='form-control' id='text-footerUpdate' placeholder='" + objForm[0].footer + "'></textarea> </div>"; 
+  fillQuestions.innerHTML += "<div class='form-group'> <label for='exampleInputEmail1'>Keywords</label> <input type='text' class='form-control' id='text-keywordsUpdate' placeholder='" + objForm[0].header + "'> </div> <div class='form-group'> <label for='exampleInputEmail1'>Footer: </label> <textarea type='text' class='form-control' id='text-footerUpdate' placeholder='" + objForm[0].footer + "'></textarea> </div>";
 
-  
+
   question = new Array();
   console.log(question);
-  //var allAns = httpGet("http://localhost:3000/questions");
-  var allAns = httpGet("https://wmmailform.herokuapp.com/questions");
+  var allAns = httpGet("http://localhost:3000/questions");
+  //var allAns = httpGet("https://wmmailform.herokuapp.com/questions");
   var objAllAns = JSON.parse(allAns);
   var tableIn = document.getElementById("questionsPlaceUpdate");
   //tableIn.innerHTML = "";
@@ -173,8 +173,8 @@ function updateForm () {
         'Accept' : 'application/json',
         'Content-Type' : 'application/json'
       },
-      //url : 'http://localhost:3000/forms/' + id.getAttribute("value"),
-      url : 'https://wmmailform.herokuapp.com/forms/' + id.getAttribute("value"),
+      url : 'http://localhost:3000/forms/' + id.getAttribute("value"),
+      //url : 'https://wmmailform.herokuapp.com/forms/' + id.getAttribute("value"),
       type : 'PATCH',
       data : formTosend,
       success : function(response, textStatus, jqXhr) {
@@ -193,8 +193,8 @@ function updateForm () {
   catch (err){
     alert("error please try again!!");
   }
-  //location.href ="http://localhost:3000/admin-forms";
-  location.href ="https://wmmailform.herokuapp.com/admin-forms";
+  location.href ="http://localhost:3000/admin-forms";
+  //location.href ="https://wmmailform.herokuapp.com/admin-forms";
 }
 
 function clearUpdate () {
@@ -219,4 +219,4 @@ function httpGet(theUrl)
     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
     xmlHttp.send( null );
     return xmlHttp.responseText;
-} 
+}

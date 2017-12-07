@@ -110,3 +110,320 @@ db.forms.aggregate([
                         as: "allques-ans-res"
                     }
                 }
+
+
+
+------------------------Form-------------
+{
+	"header": "Please answer the next form",
+	"footer": "Thanks",
+	"questions": [{
+			"idquestion": "d5f58df0-a84c-11e7-ab6f-dd4054ec3f88",
+			"answerid": "0abab6a0-9196-11e7-aed4-af3543fc6594",
+			"availabletowrite": "false",
+			"answer": "",
+			"dateanswered": "2017-12-06T23:06:33.824Z"
+		},
+		{
+			"idquestion": "fea16e30-9736-11e7-88d9-1113c020cefd",
+			"answerid": "f446e150-9195-11e7-aed4-af3543fc6594",
+			"availabletowrite": "false",
+			"answer": "",
+			"dateanswered": "2017-12-06T23:06:33.824Z"
+		},
+		{
+			"idquestion": "27e56530-9737-11e7-88d9-1113c020cefd",
+			"answerid": "4e809640-972a-11e7-8c46-75f677489351",
+			"availabletowrite": "false",
+			"answer": "",
+			"dateanswered": "2017-12-06T23:06:33.824Z"
+		},
+		{
+			"idquestion": "801d6e10-9736-11e7-88d9-1113c020cefd",
+			"answerid": "af0d5290-9195-11e7-aed4-af3543fc6594",
+			"availabletowrite": "false",
+			"answer": "",
+			"dateanswered": "2017-12-06T23:06:33.824Z"
+		},
+		{
+			"idquestion": "9f137160-a849-11e7-919d-97d298376754",
+			"answerid": "af0d5290-9195-11e7-aed4-af3543fc6594",
+			"availabletowrite": "false",
+			"answer": "",
+			"dateanswered": "2017-12-06T23:06:33.824Z"
+		}
+	]
+}
+
+
+
+
+-----------------------Form------------------------
+{
+	"header": "Encuesta de Innovación",
+	"footer": "Gracias, excelente día",
+	"questions": [{
+			"idquestion": "1ad60dc0-db72-11e7-95f7-cb09c10eab4a",
+			"answerid": "",
+			"availabletowrite": "false",
+			"answer": "",
+			"dateanswered": ""
+		},
+		{
+			"idquestion": "23ce3240-db72-11e7-95f7-cb09c10eab4a",
+			"answerid": "",
+			"availabletowrite": "false",
+			"answer": "",
+			"dateanswered": ""
+		},
+    {
+			"idquestion": "29bbd5e0-db72-11e7-95f7-cb09c10eab4a",
+			"answerid": "",
+			"availabletowrite": "false",
+			"answer": "",
+			"dateanswered": ""
+		},
+    {
+			"idquestion": "2ec952b0-db72-11e7-95f7-cb09c10eab4a",
+			"answerid": "",
+			"availabletowrite": "false",
+			"answer": "",
+			"dateanswered": ""
+		},
+    {
+			"idquestion": "3c8ce1f0-db72-11e7-95f7-cb09c10eab4a",
+			"answerid": "",
+			"availabletowrite": "false",
+			"answer": "",
+			"dateanswered": ""
+		}
+	]
+}
+
+----------------------------------Questions--------------------
+{
+	"status": "1",
+	"text": "¿Qué resultados esperas del area de innovación?",
+	"createdate": "2017-12-07T12:55:44.356Z",
+	"answers": [{
+			"id_answer": "012e16e0-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "07288bc0-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "0e10bc00-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "125654f0-db6f-11e7-95f7-cb09c10eab4a"
+		},
+    {
+			"id_answer": "15bd9bd0-db6f-11e7-95f7-cb09c10eab4a"
+		},
+    {
+			"id_answer": "196d8470-db6f-11e7-95f7-cb09c10eab4a"
+		}
+	]
+}
+
+{
+	"status": "2",
+	"text": "¿De que te gustaría tener mas visibilidad por parte del area de innovación?",
+	"createdate": "2017-12-07T12:55:44.356Z",
+	"answers": [{
+			"id_answer": "2b924af0-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "2f888b60-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "337afb40-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "37550120-db6f-11e7-95f7-cb09c10eab4a"
+		},
+    {
+			"id_answer": "3b529490-db6f-11e7-95f7-cb09c10eab4a"
+		},
+    {
+			"id_answer": "3ee29920-db6f-11e7-95f7-cb09c10eab4a"
+		}
+	]
+}
+
+{
+	"status": "3",
+	"text": "¿Cómo te gustaría estar enterado de lo que pasa en el area de innovacion?",
+	"createdate": "2017-12-07T12:55:44.356Z",
+	"answers": [{
+			"id_answer": "44de1f70-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "47f6f830-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "4c699490-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "4fe35200-db6f-11e7-95f7-cb09c10eab4a"
+		},
+    {
+			"id_answer": "53e09750-db6f-11e7-95f7-cb09c10eab4a"
+		},
+    {
+			"id_answer": "727a3b10-db71-11e7-95f7-cb09c10eab4a"
+		}
+	]
+}
+
+
+{
+	"status": "4",
+	"text": "¿Actualmente estas apoyando alguna inicativa del area de Innovación?",
+	"createdate": "2017-12-07T12:55:44.356Z",
+	"answers": [{
+			"id_answer": "5acff380-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "e203a0e0-9196-11e7-8ae2-c5669cf768ac"
+		}
+	]
+}
+
+
+{
+	"status": "5",
+	"text": "¿Qué crees que nos hace falta actualmente en el area de Innovación?",
+	"createdate": "2017-12-07T12:55:44.356Z",
+	"answers": [{
+			"id_answer": "603ea320-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "6b40c870-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "726eb440-db6f-11e7-95f7-cb09c10eab4a"
+		},
+		{
+			"id_answer": "77367580-db6f-11e7-95f7-cb09c10eab4a"
+		},
+    {
+			"id_answer": "7b3149d0-db6f-11e7-95f7-cb09c10eab4a"
+		},
+    {
+			"id_answer": "7e97a650-db6f-11e7-95f7-cb09c10eab4a"
+		}
+	]
+}
+
+-----------------------Answers-------------------
+{
+  "text": "Productos nuevos <br>",
+  "value": "productosnuevos"
+}
+{
+  "text": "Reconocimiento internacional <br>",
+  "value": "reconocimientointernacional"
+}
+{
+  "text": "Nuevas ideas para mejorar lo ya existente <br>",
+  "value": "nuevasideasmejorarexistente"
+}
+{
+  "text": "Que se genere una cultura de innovacion <br>",
+  "value": "culturainnovacion"
+}
+{
+  "text": "Mejora de procesos de negocio <br>",
+  "value": "procesonegocio"
+}
+{
+  "text": "Cambio en el modelo de negocio <br>",
+  "value": "modelonegocio"
+}
+
+
+
+{
+  "text": "Pipeline de ideas (protoripos en progeso y en backlog) <br>",
+  "value": "pipelineideas"
+}
+{
+  "text": "Metricas (como nos estamos midiendo) <br>",
+  "value": "metricas"
+}
+{
+  "text": "Proximas entregas de productos <br>",
+  "value": "primasentregas"
+}
+{
+  "text": "Nuevas tecnologias que estamos explorando <br>",
+  "value": "nuevastecnologias"
+}
+{
+  "text": "Participacion de asociados <br>",
+  "value": "participacionasociados"
+}
+{
+  "text": "Como participar <br>",
+  "value": "comoparticipar"
+}
+
+
+
+{
+  "text": "Sesiones trimestrales de status <br>",
+  "value": "statustrimestral"
+}
+{
+  "text": "Newsletter(mensual) <br>",
+  "value": "newsletter"
+}
+{
+  "text": "Workplace <br>",
+  "value": "workplace"
+}
+{
+  "text": "e-mail <br>",
+  "value": "nuevastecnologias"
+}
+{
+  "text": "Huddle <br>",
+  "value": "participacionasociados"
+}
+{
+  "text": "Confluence <br>",
+  "value": "confluence"
+}
+
+
+{
+  "text": "Si",
+  "value": "si"
+}
+
+
+{
+  "text": "Que se vea mas lo que se esta haciendo <br>",
+  "value": "verloquesehace"
+}
+{
+  "text": "Que se mida el valor de lo que se esta haciendo <br>",
+  "value": "mediciondeloquesehace"
+}
+{
+  "text": "Que tengamos mas entrenamiento de nuevas tecnologias <br>",
+  "value": "masentrenamiento"
+}
+{
+  "text": "Mejor entendimiento del negocio y las necesidades <br>",
+  "value": "entendimientonegocionecesidades"
+}
+{
+  "text": "Mayor participacion de los asociados <br>",
+  "value": "mayomarticipacionasociados"
+}
+{
+  "text": "Mayor presupuesto <br>",
+  "value": "mayorpresupuesto"
+}

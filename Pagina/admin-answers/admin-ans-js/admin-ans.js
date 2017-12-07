@@ -17,8 +17,8 @@ function SaveAns () {
 	                  'Accept' : 'application/json',
 	                  'Content-Type' : 'application/json'
 	              },
-	              url : 'http://localhost:3000/answers',
-	              //url: 'https://wmmailform.herokuapp.com/answers',
+	              // url : 'http://localhost:3000/answers',
+	              url: 'https://wmmailform.herokuapp.com/answers',
 	              type : 'POST',
 	              data : tosenans,
 	              success : function(response, textStatus, jqXhr) {
@@ -38,8 +38,8 @@ function SaveAns () {
 }
 
 function getAllAns () {
-	var allAns = httpGet("http://localhost:3000/answers");
-	//var allAns = httpGet("https://wmmailform.herokuapp.com/answers")
+	// var allAns = httpGet("http://localhost:3000/answers");
+	var allAns = httpGet("https://wmmailform.herokuapp.com/answers")
 	var objAllAns = JSON.parse(allAns);
 	var tableIn = document.getElementById("tbody");
 	tableIn.innerHTML = "";
@@ -76,16 +76,16 @@ function chagedrop (opc) {
 }
 
 function deleteAns () {
-	var urlDelte = "http://localhost:3000/answers/" + info;
-	//var urlDelte = "https://wmmailform.herokuapp.com/answers/" + info;
+	// var urlDelte = "http://localhost:3000/answers/" + info;
+	var urlDelte = "https://wmmailform.herokuapp.com/answers/" + info;
 	httpDelete(urlDelte);
 	getAllAns ();
 
 }
 
 function Updateans () {
-	var urlUpdate = "http://localhost:3000/answers/" + info;
-	//var urlUpdate = "https://wmmailform.herokuapp.com/answers/" + info;
+	// var urlUpdate = "http://localhost:3000/answers/" + info;
+	var urlUpdate = "https://wmmailform.herokuapp.com/answers/" + info;
 	var value = document.getElementById("updateans").value;
 	var valuejson = value.replace(" ", "");
 	var ansjson = new Object();

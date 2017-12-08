@@ -2,7 +2,7 @@ const Boom  = require('boom');
 const uuid  = require('node-uuid');
 const Joi   = require('joi');
 //var url = request.connection.info.protocol + '://' + request.info.host + request.url.path;
-//const url = request.connection.info.protocol 
+//const url = request.connection.info.protocol
 var moment = require('moment');
 
 
@@ -14,7 +14,7 @@ exports.register = function(server, options, next, request) {
     var idform = "53375f30-9738-11e7-88d9-1113c020cefd";
     //Modifical id para nuevo form
     var version = 17;
-    
+
     allformbyid (idform);
 
     //----------------------------------------------------------------------
@@ -25,7 +25,7 @@ exports.register = function(server, options, next, request) {
 
 //--------------JS que usa la pagina
 //---js de index
-    server.route({  
+    server.route({
       method: 'GET',
       path: '/files/js/ConectServices.js',
       handler: function (request, reply) {
@@ -34,7 +34,7 @@ exports.register = function(server, options, next, request) {
       }
     })
 //---imageicon send
-    server.route({  
+    server.route({
       method: 'GET',
       path: '/img/send.png',
       handler: function (request, reply) {
@@ -42,8 +42,8 @@ exports.register = function(server, options, next, request) {
         reply.file('././Pagina/img/send.png')
       }
     })
-//----pdf 
-    server.route({  
+//----pdf
+    server.route({
       method: 'GET',
       path: '/files/file.pdf',
       handler: function (request, reply) {
@@ -103,8 +103,8 @@ exports.register = function(server, options, next, request) {
 
 
 
-    
-    
+
+
 
 
 
@@ -374,7 +374,7 @@ exports.register = function(server, options, next, request) {
                 if (allform[i].questions[i].idquestion == allform[j].all._id) {
                     //console.log(allform[j].all._i);
                     if (allform[j].all.status.toUpperCase() === "FEEDBACK"){
-                        quest = quest + "<div class='div" + i + "'><p> <font style='color:red'> <strong>[ " + allform[j].all.status + " ]</strong> </font>" + allform[j].all.text + "</p>";    
+                        quest = quest + "<div class='div" + i + "'><p> <font style='color:red'> <strong>[ " + allform[j].all.status + " ]</strong> </font>" + allform[j].all.text + "</p>";
                     }else{
                         quest = quest + "<div class='div" + i + "'><p> <strong>[ " + allform[j].all.status + " ]</strong> " + allform[j].all.text + "</p>";
                     }
@@ -384,12 +384,12 @@ exports.register = function(server, options, next, request) {
                                 //console.log('Extoy dentro');
                                 if (allform[j].allanswers[y]._id == "278ac4e0-96f1-11e7-a1a3-7fbc3871829a")
                                 {
-                                    //quest = quest + "<button id='"+ i +"-" + allform[i].allanswers[z]._id + "' style='margin: 2px' type='button' class='btn btn-default btn-sm part" + i + "'        data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo'      value= '" + i + " " + allform[i].allanswers[z]._id + "'>" + allform[i].allanswers[z].text + "</button>";   
-                                    quest = quest + "<button id='towrite" + i + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm part" + i + "' data-toggle='modal' data-target='#exampleModal" + i + "' data-whatever='@mdo' value= '" + i + " " + allform[j].allanswers[y]._id + "'>click to write</button>";   
+                                    //quest = quest + "<button id='"+ i +"-" + allform[i].allanswers[z]._id + "' style='margin: 2px' type='button' class='btn btn-default btn-sm part" + i + "'        data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo'      value= '" + i + " " + allform[i].allanswers[z]._id + "'>" + allform[i].allanswers[z].text + "</button>";
+                                    quest = quest + "<button id='towrite" + i + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm part" + i + "' data-toggle='modal' data-target='#exampleModal" + i + "' data-whatever='@mdo' value= '" + i + " " + allform[j].allanswers[y]._id + "'>click to write</button>";
                                     quest = quest + "<div class='modal fade' id='exampleModal" + i + "' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'><div class='modal-dialog' role='document'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <h4 class='modal-title' id='exampleModalLabel'>Opinion</h4></div><div class='modal-body'><form><div class='form-group'><label for='message-text' class='control-label'>Message:</label><textarea class='form-control' id='message-text" + i + "'></textarea></div></form></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>     <button id='"+ i +"-" + allform[j].allanswers[y]._id + "' type='button' onclick='sendinfo(value)' class='btn btn-primary part" + i + "' value= '" + i + " " + allform[j].allanswers[y]._id + "' >Send message</button>    </div></div></div></div>";
                                     //quest = quest + "<textarea style='margin: 2px 2px -15px 0px'></textarea>";
                                 }else {
-                                    quest = quest + "<button id='"+ i +"-" + allform[j].allanswers[y]._id + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[j].allanswers[y]._id + "' onclick='sendinfo(value)'>" + allform[j].allanswers[y].text + "</button>";   
+                                    quest = quest + "<button id='"+ i +"-" + allform[j].allanswers[y]._id + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[j].allanswers[y]._id + "' onclick='sendinfo(value)'>" + allform[j].allanswers[y].text + "</button>";
                                 }
                             }
                         }
@@ -411,7 +411,7 @@ exports.register = function(server, options, next, request) {
             path:'././Pagina',
             layout:  'index',
             context: {
-                    datenow: moment().format('MMMM Do YYYY') 
+                    datenow: moment().format('MMMM Do YYYY')
                     //header: allform[0].header + "<hr>",
                     //questionsAns: quest,
                     //footer: allform[0].footer
@@ -419,7 +419,7 @@ exports.register = function(server, options, next, request) {
             helpersPath: '././Pagina/js'
         })
 
-        /*server.route({  
+        /*server.route({
           method: 'GET',
           path: '/formasn' ,
           handler: {
@@ -427,7 +427,7 @@ exports.register = function(server, options, next, request) {
           }
         })*/
 
-        server.route({  
+        server.route({
           method: 'GET',
           path: '/formasn' ,
           handler: function (request, reply) {

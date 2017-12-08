@@ -1,8 +1,9 @@
 var URLactual = window.location;
 var urlid =  URLactual.href.toString();
 var aux = 0;
-var realquesnumber=0, quesnumber=0;
+var realquesnumber=0;
 var dateStr = new Date();
+var ansnumber=[];
 
 for (var i =0; i < urlid.length; i++) {
  if (urlid[i] == '?'){
@@ -23,7 +24,7 @@ function sendinfo (valueans) {
     //$("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary btn-sm part" + questionNum);
     //$("#"+ questionNum +"-"+ idquestion).attr("style","color: #ffffff; background-color: #004c91");
     $(".part" + questionNum).attr("class","btn btn-default btn-sm part" + questionNum);
-    $(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
+    //$(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
     //console.log(idquestion);
     $.ajax({
     url: "https://wmmailform.herokuapp.com/formsid/" + idform
@@ -60,30 +61,74 @@ function sendinfo (valueans) {
           $("#towrite" + questionNum).attr("style","color: #ffffff; background-color: #004c91");
         }
       }else {
+        $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary btn-sm part" + questionNum);
+        $("#"+ questionNum +"-"+ idquestion).attr("style","color: #ffffff; background-color: #004c91");
         form[0].questions[questionNum].answer = "";
         form[0].questions[questionNum].answerid = idquestion;
         var auxNumber = lookforQuestAns(form[0].questions[questionNum].idquestion, multipleUsersSend);
-        if (auxNumber>=0){
-          multipleUsersSend.answers[auxNumber].idanswer = idquestion
-          quesnumber-=1;
-        }else{
-          multipleUsersSend.answers.push({idquestion: form[0].questions[questionNum].idquestion, idanswer: idquestion});
-          quesnumber+=1;
+
+        for (var i = 0; i < multipleUsersSend.answers.length; i++) {
+          if (multipleUsersSend.answers[i].idquestion==form[0].questions[questionNum].idquestion){
+            if (auxNumber>=0){
+              if (multipleUsersSend.answers[auxNumber].idanswers.length>=ansnumber[auxNumber]+1){
+                alert("no more options");
+              }else {
+                var auxAnswerRepeat = lookforAnsRepeat(idquestion, multipleUsersSend, auxNumber);
+                if(auxAnswerRepeat>=0){
+                  multipleUsersSend.answers[auxNumber].idanswers.splice(auxAnswerRepeat, 1);
+                  $("#" + auxNumber + '-' + idquestion).attr("class","btn btn-default btn-sm part"+auxNumber);
+                  $("#" + auxNumber + '-' + idquestion).attr("style","margin: 2px; border-color:#004c91;");
+                }else {
+                  //multipleUsersSend.answers[auxNumber].idanswers.push({idanswer: idquestion});
+                  multipleUsersSend.answers[auxNumber].idanswers.push({idanswer: idquestion});
+                }
+              }
+            }else {
+              //multipleUsersSend.answers.push({idquestion: form[0].questions[questionNum].idquestion, idanswers: [{idanswer: idquestion}]});
+              multipleUsersSend.answers[i].idanswers.push({idanswers: [{idanswer: idquestion}]});
+            }
+
+          }
         }
-        console.log("hola----");
-        console.log(multipleUsersSend.answers);
-        //$("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary");
-        //$(".part" + questionNum).attr("class","btn btn-default btn-sm part" + questionNum);
-        //$(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
-        $("#"+ questionNum +"-"+ idquestion).attr("class","btn btn-primary btn-sm part" + questionNum);
-        $("#"+ questionNum +"-"+ idquestion).attr("style","color: #ffffff; background-color: #004c91");
+
+
+
+        //Arreglo.answers[indexquest].idanswers[i]
+
+
+
+
+
+
+
+
+        // if (auxNumber>=0){
+        //   //var answerRepeat =
+        //   console.log(auxNumber);
+        //   for (var i = 0; i < multipleUsersSend.answers[auxNumber].length; i++) {
+        //
+        //     if (multipleUsersSend.answers[auxNumber].==idquestion){
+        //       $("#" + auxNumber + '-' + idquestion).attr("class","marcos");
+        //
+        //     }
+        //   }
+        //   //multipleUsersSend.answers[auxNumber].idanswer = idquestion;
+        //   quesnumber-=1;
+        // }else{
+        //   multipleUsersSend.answers.push({idquestion: form[0].questions[questionNum].idquestion, idanswer: idquestion});
+        //   quesnumber+=1;
+        // }
+
+
+        console.log(multipleUsersSend);
+
       }
       form[0].questions[questionNum].dateanswered = dateStr.toISOString();
       delete form[0]._id;
       infosendstringarr = JSON.stringify(form);
       infosendstringarr = infosendstringarr.substring(1, infosendstringarr.length-1);
 
-      console.log(infosendstringarr);
+      //console.log(infosendstringarr);
       try {
         $.ajax({
               headers : {
@@ -134,18 +179,20 @@ window.onload = function () {
   // var getform = httpGet("http://localhost:3000/forms/" + idFormR);
   var getform = httpGet("https://wmmailform.herokuapp.com/forms/" + idFormR);
   var allform = JSON.parse(getform);
-  console.log(allform);
+  //console.log(allform);
   var topush = document.getElementById("fillQuestionAns");
   realquesnumber = allform[0].questions.length;
   for (var i = 0; i <= allform[0].questions.length - 1; i++) {
             for (var j = 0; j <= allform[0].questions.length - 1; j++){
                 if (allform[i].questions[i].idquestion == allform[j].all._id) {
                     //console.log(allform[j].all._i);
+                    multipleUsersSend.answers.push({idquestion: allform[i].questions[i].idquestion, idanswers: []})
                     if (allform[j].all.status.toUpperCase() === "FEEDBACK"){
                     topush.innerHTML += "<div class='div" + i + "'><p> <font style='color:red'> <strong>[ " + allform[j].all.status + " ]</strong> </font>" + allform[j].all.text + "</p>";
                     }else{
                     topush.innerHTML += "<div class='div" + i + "'><p> <strong>[ " + allform[j].all.status + " ]</strong> " + allform[j].all.text + "</p>";
                     }
+                    ansnumber.push(allform[j].all.answers.length);
                     for (var z = 0; z <= allform[j].all.answers.length - 1; z++) {
                         for (var y = 0; y <= allform[j].all.answers.length - 1; y++) {
                             if (allform[j].all.answers[z].id_answer == allform[j].allanswers[y]._id) {
@@ -157,7 +204,7 @@ window.onload = function () {
                                 topush.innerHTML += "<div class='modal fade' id='exampleModal" + i + "' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'><div class='modal-dialog' role='document'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <h4 class='modal-title' id='exampleModalLabel'>Opinion</h4></div><div class='modal-body'><form><div class='form-group'><label for='message-text' class='control-label'>Message:</label><textarea class='form-control' id='message-text" + i + "'></textarea></div></form></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>     <button id='"+ i +"-" + allform[j].allanswers[y]._id + "' type='button' onclick='sendinfo(value)' class='btn btn-primary part" + i + "' value= '" + i + " " + allform[j].allanswers[y]._id + "' >Send message</button>    </div></div></div></div>";
                                   topush.innerHTML += "<textarea style='margin: 2px 2px -15px 0px'></textarea>";
                                 }else {
-                                topush.innerHTML += "<button id='"+ i +"-" + allform[j].allanswers[y]._id + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[j].allanswers[y]._id + "' onclick='sendinfo(value)'>" + allform[j].allanswers[y].text + "</button>";
+                                  topush.innerHTML += "<button id='"+ i +"-" + allform[j].allanswers[y]._id + "' style='margin: 2px; border-color:#004c91;' type='button' class='btn btn-default btn-sm part" + i + "' value= '" + i + " " + allform[j].allanswers[y]._id + "' onclick='sendinfo(value)'>" + allform[j].allanswers[y].text + "</button>";
                                 }
                             }
                         }
@@ -179,7 +226,17 @@ function httpGet(theUrl)
 }
 
 function forVariousUsers(){
-    if (realquesnumber === quesnumber){
+  var allanswered=true;
+  if(multipleUsersSend.answers.length==0)
+    allanswered=false;
+  else {
+    for (var i = 0; i < multipleUsersSend.answers.length; i++) {
+      if(multipleUsersSend.answers[i].idanswers.length==0)
+        allanswered=false;
+    }
+  }
+
+    if (allanswered){
       var tosenmultipleUs = JSON.stringify(multipleUsersSend);
       console.log(tosenmultipleUs);
       close ();
@@ -215,13 +272,26 @@ function forVariousUsers(){
 
 }
 
-function lookforQuestAns(idQuestion, Arreglo){//Busca el id en el arreglo para cambiar la respuesta
+function lookforQuestAns(idQuestion, Arreglo){ //Busca el id en el arreglo para cambiar la respuesta
   var repeat=-1;
   for (var i = 0; i<Arreglo.answers.length; i++){
-    if (Arreglo.answers[i].idquestion === idQuestion){
+    if (Arreglo.answers[i].idquestion == idQuestion){
       repeat=i;
     }
+
   }
   if (repeat>=0)
     return repeat;
+}
+
+function lookforAnsRepeat(idQuestion, Arreglo, indexquest){ //Busca el id en el arreglo para cambiar la respuesta
+  var repeat=-1;
+  for (var i = 0; i<Arreglo.answers[indexquest].idanswers.length; i++){
+    if (Arreglo.answers[indexquest].idanswers[i].idanswer == idQuestion){
+      repeat=i;
+    }
+  }
+  if (repeat>=0){
+    return repeat;
+    console.log(repeat);}
 }

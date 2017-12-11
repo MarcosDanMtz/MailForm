@@ -27,8 +27,8 @@ function sendinfo (valueans) {
     //$(".part" + questionNum).attr("style","margin: 2px; border-color:#004c91;");
     //console.log(idquestion);
     $.ajax({
-    url: "https://wmmailform.herokuapp.com/formsid/" + idform
-    // url: "http://localhost:3000/formsid/" + idform
+    // url: "https://wmmailform.herokuapp.com/formsid/" + idform
+    url: "http://localhost:3000/formsid/" + idform
     }).then(function(updateform) {
       update(updateform);
 
@@ -80,12 +80,13 @@ function sendinfo (valueans) {
                   $("#" + auxNumber + '-' + idquestion).attr("style","margin: 2px; border-color:#004c91;");
                 }else {
                   //multipleUsersSend.answers[auxNumber].idanswers.push({idanswer: idquestion});
-                  multipleUsersSend.answers[auxNumber].idanswers.push({idanswer: idquestion});
+
+                  multipleUsersSend.answers[auxNumber].idanswers.push({idanswer: idquestion, answer: document.getElementById(questionNum + "-" + idquestion).innerHTML});
                 }
               }
             }else {
               //multipleUsersSend.answers.push({idquestion: form[0].questions[questionNum].idquestion, idanswers: [{idanswer: idquestion}]});
-              multipleUsersSend.answers[i].idanswers.push({idanswers: [{idanswer: idquestion}]});
+              multipleUsersSend.answers[i].idanswers.push({idanswers: [{idanswer: idquestion, answer: document.getElementById(questionNum + "-" + idquestion).innerHTML}]});
             }
 
           }
@@ -135,8 +136,8 @@ function sendinfo (valueans) {
                   'Accept' : 'application/json',
                   'Content-Type' : 'application/json'
               },
-              // url : 'http://localhost:3000/forms/' + idform,
-              url : 'https://wmmailform.herokuapp.com/forms/' + idform,
+              url : 'http://localhost:3000/forms/' + idform,
+              // url : 'https://wmmailform.herokuapp.com/forms/' + idform,
               type : 'PATCH',
               data : infosendstringarr,
               success : function(response, textStatus, jqXhr) {
@@ -168,16 +169,16 @@ function close () {
   //document.body.style.backgroundColor='#FFFFFF';
   $("#body").empty();
   $("#body").append('<h1 style="text-align: center;">Sent</h1>');
-  // $("#body").append('<div class="animated lightSpeedOut"><img style="text-align: center;" width="120px" height="120px" src="http://localhost:3000/img/send.png" alt="send-ms" height="42" width="42"></div>');
-  $("#body").append('<div class="animated lightSpeedOut"><img style="text-align: center;" width="120px" height="120px" src="https://wmmailform.herokuapp.com/img/send.png" alt="send-ms" height="42" width="42"></div>');
+  $("#body").append('<div class="animated lightSpeedOut"><img style="text-align: center;" width="120px" height="120px" src="http://localhost:3000/img/send.png" alt="send-ms" height="42" width="42"></div>');
+  // $("#body").append('<div class="animated lightSpeedOut"><img style="text-align: center;" width="120px" height="120px" src="https://wmmailform.herokuapp.com/img/send.png" alt="send-ms" height="42" width="42"></div>');
   $("#body").append('<h4 style="text-align: center;">Information sent, Thanks!</h4>');
   console.log("hoal");
 }
 
 
 window.onload = function () {
-  // var getform = httpGet("http://localhost:3000/forms/" + idFormR);
-  var getform = httpGet("https://wmmailform.herokuapp.com/forms/" + idFormR);
+  var getform = httpGet("http://localhost:3000/forms/" + idFormR);
+  // var getform = httpGet("https://wmmailform.herokuapp.com/forms/" + idFormR);
   var allform = JSON.parse(getform);
   //console.log(allform);
   var topush = document.getElementById("fillQuestionAns");
@@ -185,8 +186,8 @@ window.onload = function () {
   for (var i = 0; i <= allform[0].questions.length - 1; i++) {
             for (var j = 0; j <= allform[0].questions.length - 1; j++){
                 if (allform[i].questions[i].idquestion == allform[j].all._id) {
-                    //console.log(allform[j].all._i);
-                    multipleUsersSend.answers.push({idquestion: allform[i].questions[i].idquestion, idanswers: []})
+                    // console.log(allform[j].all.text);
+                    multipleUsersSend.answers.push({idquestion: allform[i].questions[i].idquestion, question: allform[j].all.text, idanswers: []})
                     if (allform[j].all.status.toUpperCase() === "FEEDBACK"){
                     topush.innerHTML += "<div class='div" + i + "'><p> <font style='color:red'> <strong>[ " + allform[j].all.status + " ]</strong> </font>" + allform[j].all.text + "</p>";
                     }else{
@@ -246,8 +247,8 @@ function forVariousUsers(){
                   'Accept' : 'application/json',
                   'Content-Type' : 'application/json'
               },
-              // url : 'http://localhost:3000/forms-answers',
-              url : 'https://wmmailform.herokuapp.com/forms-answers',
+              url : 'http://localhost:3000/forms-answers',
+              // url : 'https://wmmailform.herokuapp.com/forms-answers',
               type : 'POST',
               data : tosenmultipleUs,
               success : function(response, textStatus, jqXhr) {

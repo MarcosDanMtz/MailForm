@@ -80,12 +80,13 @@ function sendinfo (valueans) {
                   $("#" + auxNumber + '-' + idquestion).attr("style","margin: 2px; border-color:#004c91;");
                 }else {
                   //multipleUsersSend.answers[auxNumber].idanswers.push({idanswer: idquestion});
-                  multipleUsersSend.answers[auxNumber].idanswers.push({idanswer: idquestion});
+
+                  multipleUsersSend.answers[auxNumber].idanswers.push({idanswer: idquestion, answer: document.getElementById(questionNum + "-" + idquestion).innerHTML});
                 }
               }
             }else {
               //multipleUsersSend.answers.push({idquestion: form[0].questions[questionNum].idquestion, idanswers: [{idanswer: idquestion}]});
-              multipleUsersSend.answers[i].idanswers.push({idanswers: [{idanswer: idquestion}]});
+              multipleUsersSend.answers[i].idanswers.push({idanswers: [{idanswer: idquestion, answer: document.getElementById(questionNum + "-" + idquestion).innerHTML}]});
             }
 
           }
@@ -185,8 +186,8 @@ window.onload = function () {
   for (var i = 0; i <= allform[0].questions.length - 1; i++) {
             for (var j = 0; j <= allform[0].questions.length - 1; j++){
                 if (allform[i].questions[i].idquestion == allform[j].all._id) {
-                    //console.log(allform[j].all._i);
-                    multipleUsersSend.answers.push({idquestion: allform[i].questions[i].idquestion, idanswers: []})
+                    // console.log(allform[j].all.text);
+                    multipleUsersSend.answers.push({idquestion: allform[i].questions[i].idquestion, question: allform[j].all.text, idanswers: []})
                     if (allform[j].all.status.toUpperCase() === "FEEDBACK"){
                     topush.innerHTML += "<div class='div" + i + "'><p> <font style='color:red'> <strong>[ " + allform[j].all.status + " ]</strong> </font>" + allform[j].all.text + "</p>";
                     }else{

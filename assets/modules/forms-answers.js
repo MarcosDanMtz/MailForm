@@ -108,7 +108,7 @@ exports.register = function(server, options, next) {
         },
         handler: function (request, reply) {
 
-            db.questions.update(
+            db.formsanswers.update(
                 {
                     _id: request.params.id
                 },
@@ -139,10 +139,9 @@ exports.register = function(server, options, next) {
                 },
                 payload:
                 {
-                    status:         Joi.string().required(),
-                    text:           Joi.string().required(),
-                    createdate:     Joi.date().iso().optional(),
-                    answers:        Joi.optional()
+                  idform:         Joi.string().required(),
+                  createdate:     Joi.date().iso().optional(),
+                  answers:        Joi.optional()
                 }
             }
         }
